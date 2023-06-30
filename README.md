@@ -20,6 +20,11 @@ It is also possible to build the project with clang++, by editing the Makefile a
 
 The Shell program can be run with the command
 
+    bin/Shell
+
+It can also be run with the commands
+
+    cd bin
     ./Shell
 
 The ./ prefix is Unix syntax for running an executable. This syntax is used on Unix, Linux, and MacOS.
