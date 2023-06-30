@@ -5,7 +5,8 @@
 
 using namespace std;
 
-class Shell {
+class Shell
+{
 public:
     Shell();
     string exec(string cmd);

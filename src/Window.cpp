@@ -1,6 +1,6 @@
 #include "Window.h"
 
-Window::Window() 
+Window::Window()
 : vbox(Gtk::Orientation::VERTICAL)
 {
     set_title("Shell");

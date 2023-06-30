@@ -4,7 +4,8 @@
 #include "TextArea.h"
 #include <gtkmm.h>
 
-class Window : public Gtk::Window {
+class Window : public Gtk::Window
+{
 public:
     Window();
 private:

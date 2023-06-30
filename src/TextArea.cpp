@@ -16,7 +16,7 @@ TextArea::TextArea()
     add_controller(controller);
 }
 
-bool TextArea::on_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state) 
+bool TextArea::on_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state)
 {
     if (keyval == GDK_KEY_Return) {
         Glib::RefPtr<Gtk::TextBuffer::Mark> cursor = buffer->get_insert();

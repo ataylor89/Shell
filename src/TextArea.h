@@ -4,7 +4,8 @@
 #include "Shell.h"
 #include <gtkmm.h>
 
-class TextArea : public Gtk::TextView {
+class TextArea : public Gtk::TextView
+{
 public:
     TextArea();
 private:
