@@ -16,6 +16,7 @@ string Shell::exec(string cmd)
     char buffer[128];
     while (fgets(buffer, 128, pipe))
         output += buffer;
+    pclose(pipe);
     if (!output.empty() && output.back() != '\n')
         output += "\n";
     return output;
