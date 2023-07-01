@@ -13,7 +13,9 @@ string Shell::exec(string cmd)
     cmd += " 2>&1";
     string output;
     char buffer[128];
-    FILE* pipe = popen(cmd.c_str(), "r");
+    FILE* pipe;
+    if ((pipe = popen(cmd.c_str(), "r")) == NULL)
+        return "";
     while (fgets(buffer, 128, pipe))
         output += buffer;
     pclose(pipe);
