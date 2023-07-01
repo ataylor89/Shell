@@ -10,6 +10,7 @@ string Shell::exec(string cmd)
 {
     if (cmd.find_first_not_of(' ') == string::npos)
         return "";
+    cmd += " 2>&1";
     FILE* pipe = popen(cmd.c_str(), "r");
     string output;
     char buffer[128];
