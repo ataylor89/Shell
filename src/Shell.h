@@ -10,6 +10,8 @@ class Shell
 public:
     Shell();
     string exec(string cmd);
+private:
+    const string output_file;
 };
 
 #endif

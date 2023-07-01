@@ -4,16 +4,20 @@
 #include <sstream>
 #include <iostream>
 
-Shell::Shell() {}
+Shell::Shell() 
+: output_file("/tmp/shell.txt") 
+{
+    
+}
 
 string Shell::exec(string cmd)
 {
         if (cmd.find_first_not_of(' ') == string::npos)
             return "";
-        cmd += " &> /tmp/shell.txt";
+        cmd += " &> " + output_file;
         system(cmd.c_str());
         ostringstream ss;
-        ss << ifstream("/tmp/shell.txt").rdbuf();
+        ss << ifstream(output_file).rdbuf();
         string output = ss.str();
         if (!output.empty() && output.back() != '\n')
             output += "\n";
