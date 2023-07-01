@@ -14,7 +14,15 @@ I wrote a Makefile to automate the build process. After installing the gtkmm4 de
 
 This tells g++ to compile all of the source files, and link the object files into a binary named "Shell".
 
-It is also possible to build the project with clang++, by editing the Makefile and substituting clang++ for g++ in the recipe of the install rule. I have tested this build process with both the g++ and clang++ compilers.
+As an alternative, the project can be built with the command
+
+    make clean install
+
+This runs the "clean" rule before running the "install" rule.
+
+The "install" rule uses the g++ compiler to compile all of the source files. It is also possible to compile the source files with the clang++ compiler, by editing the Makefile and substituting clang++ for g++.
+
+I have tested the build process with both the g++ and clang++ compilers.
 
 ## Running the application
 
