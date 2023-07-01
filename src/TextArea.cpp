@@ -7,6 +7,7 @@ TextArea::TextArea()
 : prefix("% ")
 {
     this->set_editable(true);
+    this->set_wrap_mode(Gtk::WrapMode::WORD_CHAR);
     buffer = Gtk::TextBuffer::create();
     buffer->set_text(prefix);
     this->set_buffer(buffer);

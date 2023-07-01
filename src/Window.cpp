@@ -12,7 +12,7 @@ Window::Window()
     vbox.set_margin_bottom(10);
     set_child(vbox);
 
-    scrolled_window.set_policy(Gtk::PolicyType::AUTOMATIC, Gtk::PolicyType::AUTOMATIC);
+    scrolled_window.set_policy(Gtk::PolicyType::NEVER, Gtk::PolicyType::AUTOMATIC);
     scrolled_window.set_expand();
     scrolled_window.set_child(text_area);
     vbox.append(scrolled_window);
