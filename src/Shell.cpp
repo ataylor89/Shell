@@ -14,11 +14,11 @@ string Shell::exec(string cmd)
 {
     if (cmd.find_first_not_of(' ') == string::npos)
         return "";
-    cmd += " &> " + output_file;
-    system(cmd.c_str());
-    ostringstream ss;
-    ss << ifstream(output_file).rdbuf();
-    string output = ss.str();
+    FILE* pipe = popen(cmd.c_str(), "r");
+    string output;
+    char buffer[128];
+    while (fgets(buffer, 128, pipe))
+        output += buffer;
     if (!output.empty() && output.back() != '\n')
         output += "\n";
     return output;
