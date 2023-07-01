@@ -4,11 +4,7 @@
 #include <sstream>
 #include <iostream>
 
-Shell::Shell() 
-: output_file("/tmp/shell.txt") 
-{
-
-}
+Shell::Shell() {}
 
 string Shell::exec(string cmd)
 {
