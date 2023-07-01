@@ -10,7 +10,7 @@ string Shell::exec(string cmd)
 {
         if (cmd.find_first_not_of(' ') == string::npos)
             return "";
-        cmd += " > /tmp/shell.txt";
+        cmd += " &> /tmp/shell.txt";
         system(cmd.c_str());
         ostringstream ss;
         ss << ifstream("/tmp/shell.txt").rdbuf();
