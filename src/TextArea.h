@@ -13,6 +13,7 @@ private:
 
     Shell shell;
     Glib::RefPtr<Gtk::TextBuffer> buffer;
+    const string prefix;
 };
 
 #endif
