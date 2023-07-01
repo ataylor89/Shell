@@ -19,7 +19,8 @@ TextArea::TextArea()
 
 bool TextArea::on_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state)
 {
-    if (keyval == GDK_KEY_Return) {
+    if (keyval == GDK_KEY_Return)
+    {
         Glib::RefPtr<Gtk::TextBuffer::Mark> cursor = buffer->get_insert();
         Gtk::TextBuffer::iterator end = buffer->get_iter_at_mark(cursor);
         Gtk::TextBuffer::iterator start = end;
@@ -31,7 +32,8 @@ bool TextArea::on_key_pressed(guint keyval, guint keycode, Gdk::ModifierType sta
         buffer->insert_at_cursor("\n" + output + prefix);
         return true;       
     }
-    else if (keyval == GDK_KEY_BackSpace) {
+    else if (keyval == GDK_KEY_BackSpace)
+    {
         Glib::RefPtr<Gtk::TextBuffer::Mark> cursor = buffer->get_insert();
         Gtk::TextBuffer::iterator iter = buffer->get_iter_at_mark(cursor);
         iter.backward_chars(2);
