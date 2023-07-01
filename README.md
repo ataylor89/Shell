@@ -20,9 +20,7 @@ As an alternative, the project can be built with the command
 
 This runs the "clean" rule before running the "install" rule.
 
-The "install" rule uses the g++ compiler to compile all of the source files. It is also possible to compile the source files with the clang++ compiler, by editing the Makefile and substituting clang++ for g++.
-
-I have tested the build process with both the g++ and clang++ compilers.
+It is also possible to compile the source files with the clang++ compiler, by editing the Makefile and substituting clang++ for g++. I have tested the build process with both the g++ and clang++ compilers.
 
 ## Running the application
 
