@@ -6,16 +6,6 @@
 
 Shell::Shell() {}
 
-void Shell::set_text_area(TextArea* text_area)
-{
-    this->text_area = text_area;
-}
-
-TextArea* Shell::get_text_area()
-{
-    return text_area;
-}
-
 void Shell::exec(std::string command)
 {
     if (command.find_first_not_of(' ') == std::string::npos)
@@ -44,4 +34,14 @@ void Shell::exec(std::string command)
         std::string prefix = text_area->get_prefix();
         buffer->insert_at_cursor("\n" + output + prefix);
     }
+}
+
+void Shell::set_text_area(TextArea* text_area)
+{
+    this->text_area = text_area;
+}
+
+TextArea* Shell::get_text_area()
+{
+    return text_area;
 }
