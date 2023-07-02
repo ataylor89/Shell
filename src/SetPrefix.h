@@ -6,7 +6,7 @@
 class SetPrefix : public Command
 {
 public:
-    SetPrefix(const std::string& cmd, Window* window);
+    SetPrefix(std::string& cmd, Window* window);
     void exec();
 };
 

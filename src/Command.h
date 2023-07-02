@@ -7,7 +7,7 @@
 class Command
 {
 public:
-    Command(const std::string& cmd, Window* window);
+    Command(std::string& cmd, Window* window);
     virtual void exec();
 protected:
     std::string cmd;

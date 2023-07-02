@@ -6,7 +6,7 @@
 class Exit : public Command
 {
 public:
-    Exit(const std::string& cmd, Window* window);
+    Exit(std::string& cmd, Window* window);
     void exec();
 };
 

@@ -60,7 +60,7 @@ bool TextArea::on_key_pressed(guint keyval, guint keycode, Gdk::ModifierType sta
         }
 
         start.forward_chars(start == buffer->begin() ? len : len + 1);
-        const std::string command = buffer->get_text(start, end);
+        std::string command = buffer->get_text(start, end);
 
         Shell* shell = window->get_shell();
         shell->exec(command);

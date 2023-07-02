@@ -10,7 +10,7 @@ Parser::Parser(Window* window)
     this->window = window;
 }
 
-Command* Parser::parse(const std::string cmd)
+Command* Parser::parse(std::string cmd)
 {
     std::vector<std::string> args = StringUtils::split(cmd, " ");
     if (args.empty())

@@ -8,8 +8,8 @@ using namespace std;
 
 namespace StringUtils
 {
-    vector<string> split(const string& str, const string& delim);
-    vector<string> split(const string& str, const string& delim, int limit);
+    vector<string> split(string& str, const string& delim);
+    vector<string> split(string& str, const string& delim, int limit);
 };
 
 #endif

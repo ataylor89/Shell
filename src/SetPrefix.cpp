@@ -1,7 +1,7 @@
 #include "SetPrefix.h"
 #include "StringUtils.h"
 
-SetPrefix::SetPrefix(const std::string& cmd, Window* window) : Command(cmd, window) {}
+SetPrefix::SetPrefix(std::string& cmd, Window* window) : Command(cmd, window) {}
 
 void SetPrefix::exec()
 {

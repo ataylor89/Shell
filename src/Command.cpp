@@ -4,7 +4,7 @@
 #include <sstream>
 #include <iostream>
 
-Command::Command(const std::string& cmd, Window* window)
+Command::Command(std::string& cmd, Window* window)
 {
     this->cmd = cmd;
     this->window = window;

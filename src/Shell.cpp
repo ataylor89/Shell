@@ -5,7 +5,7 @@ Shell::Shell(Window* window)
     this->window = window;
 }
 
-void Shell::exec(const std::string command)
+void Shell::exec(std::string command)
 {
     Parser* parser;
     Command* cmd;
