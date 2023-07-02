@@ -1,47 +1,27 @@
 #include "Shell.h"
-#include <cstdlib>
-#include <fstream>
-#include <sstream>
-#include <iostream>
 
-Shell::Shell() {}
-
-void Shell::exec(std::string command)
+Shell::Shell(Window* window) 
 {
-    if (command.find_first_not_of(' ') == std::string::npos)
-        return;
+    this->window = window;
+}
 
-    Glib::RefPtr<Gtk::TextBuffer> buffer = text_area->get_buffer();
+void Shell::exec(const std::string command)
+{
+    Parser* parser;
+    Command* cmd;
+    TextArea* text_area;
 
-    if (command == "clear")
+    parser = window->get_parser();
+    cmd = parser->parse(command);
+    
+    if (cmd == NULL)
     {
-        std::string prefix = text_area->get_prefix();
-        buffer->set_text(prefix);
+        text_area = window->get_text_area();
+        text_area->append("\nShell: command not found: " + command + "\n");
+        text_area->append_prefix();
     }
     else
     {
-        command += " 2>&1";
-        std::string output;
-        char tmp[128];
-        FILE* pipe;
-        if ((pipe = popen(command.c_str(), "r")) == NULL)
-            return;
-        while (fgets(tmp, 128, pipe))
-            output += tmp;
-        pclose(pipe);
-        if (!output.empty() && output.back() != '\n')
-            output += "\n";
-        std::string prefix = text_area->get_prefix();
-        buffer->insert_at_cursor("\n" + output + prefix);
+        cmd->exec();
     }
-}
-
-void Shell::set_text_area(TextArea* text_area)
-{
-    this->text_area = text_area;
-}
-
-TextArea* Shell::get_text_area()
-{
-    return text_area;
 }

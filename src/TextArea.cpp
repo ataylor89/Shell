@@ -1,10 +1,15 @@
 #include "TextArea.h"
 
-TextArea::TextArea() : prefix("% ")
+TextArea::TextArea(Window* window)
 {
+    this->window = window;
+
     set_editable(true);
     set_wrap_mode(Gtk::WrapMode::WORD_CHAR);
-    Glib::RefPtr<Gtk::TextBuffer> buffer = Gtk::TextBuffer::create();
+
+    auto buffer = Gtk::TextBuffer::create();
+    Settings* settings = window->get_settings();
+    std::string prefix = settings->get_prefix();
     buffer->set_text(prefix);
     set_buffer(buffer);
 
@@ -14,25 +19,48 @@ TextArea::TextArea() : prefix("% ")
     add_controller(controller);
 }
 
+void TextArea::clear()
+{
+    auto buffer = get_buffer();
+    Settings* settings = window->get_settings();
+    std::string prefix = settings->get_prefix();
+    buffer->set_text(prefix);
+}
+
+void TextArea::append(std::string text)
+{
+    auto buffer = get_buffer();
+    buffer->insert_at_cursor(text);
+}
+
+void TextArea::append_prefix()
+{
+    auto buffer = get_buffer();
+    Settings* settings = window->get_settings();
+    std::string prefix = settings->get_prefix();
+    buffer->insert_at_cursor(prefix);
+}
+
 bool TextArea::on_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state)
 {
     if (keyval == GDK_KEY_Return)
     {
-        Glib::RefPtr<Gtk::TextBuffer> buffer = this->get_buffer();
-        Glib::RefPtr<Gtk::TextBuffer::Mark> cursor = buffer->get_insert();
+        auto buffer = get_buffer();
+        auto cursor = buffer->get_insert();
         Gtk::TextBuffer::iterator end = buffer->get_iter_at_mark(cursor);
         Gtk::TextBuffer::iterator start = end;
         while (start.get_char() != '\n' && start != buffer->begin())
             start--;
         start.forward_chars(start == buffer->begin() ? 2 : 3);
-        std::string command = buffer->get_text(start, end);
+        const std::string command = buffer->get_text(start, end);
+        Shell* shell = window->get_shell();
         shell->exec(command);
         return true;
     }
     else if (keyval == GDK_KEY_BackSpace)
     {
-        Glib::RefPtr<Gtk::TextBuffer> buffer = this->get_buffer();
-        Glib::RefPtr<Gtk::TextBuffer::Mark> cursor = buffer->get_insert();
+        auto buffer = get_buffer();
+        auto cursor = buffer->get_insert();
         Gtk::TextBuffer::iterator iter = buffer->get_iter_at_mark(cursor);
         iter.backward_chars(2);
         if (iter == buffer->begin())
@@ -42,24 +70,4 @@ bool TextArea::on_key_pressed(guint keyval, guint keycode, Gdk::ModifierType sta
             return true;
     }
     return false;
-}
-
-void TextArea::set_prefix(std::string prefix) 
-{
-    this->prefix = prefix;
-}
-
-std::string TextArea::get_prefix()
-{
-    return prefix;
-}
-
-void TextArea::set_shell(Shell* shell) 
-{
-    this->shell = shell;
-}
-
-Shell* TextArea::get_shell()
-{
-    return shell;
 }

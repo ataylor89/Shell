@@ -1,20 +1,18 @@
-#ifndef TEXTAREA_H
-#define TEXTAREA_H
+#ifndef TEXT_AREA_H
+#define TEXT_AREA_H
 
 #include "Window.h"
 
 class TextArea : public Gtk::TextView
 {
 public:
-    TextArea();
-    void set_prefix(std::string prefix);
-    std::string get_prefix();
-    void set_shell(Shell* shell);
-    Shell* get_shell();
+    TextArea(Window* window);
+    void clear();
+    void append(std::string text);
+    void append_prefix();
 private:
     bool on_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state);
-    Shell* shell;
-    std::string prefix;
+    Window* window;
 };
 
 #endif

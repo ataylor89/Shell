@@ -6,12 +6,10 @@
 class Shell
 {
 public:
-    Shell();
+    Shell(Window* window);
     void exec(std::string command);
-    void set_text_area(TextArea* text_area);
-    TextArea* get_text_area();
 private:
-    TextArea* text_area;
+    Window* window;
 };
 
 #endif
