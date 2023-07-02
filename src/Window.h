@@ -1,8 +1,13 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
-#include "TextArea.h"
+class TextArea;
+class Shell;
+
 #include <gtkmm.h>
+#include <string>
+#include "TextArea.h"
+#include "Shell.h"
 
 class Window : public Gtk::Window
 {
@@ -11,7 +16,8 @@ public:
 private:
     Gtk::Box vbox;
     Gtk::ScrolledWindow scrolled_window;
-    TextArea text_area;
+    TextArea *text_area;
+    Shell *shell;
 };
 
 #endif
