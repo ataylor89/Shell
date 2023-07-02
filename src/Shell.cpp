@@ -17,7 +17,7 @@ void Shell::exec(const std::string command)
     if (cmd == NULL)
     {
         text_area = window->get_text_area();
-        text_area->append("\nShell: command not found: " + command + "\n");
+        text_area->append("\n");
         text_area->append_prefix();
     }
     else
