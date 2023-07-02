@@ -1,6 +1,7 @@
 #include "Parser.h"
-#include "Clear.h"
 #include "Command.h"
+#include "Clear.h"
+#include "Exit.h"
 #include "StringUtils.h"
 
 Parser::Parser(Window* window) 
@@ -18,6 +19,10 @@ Command* Parser::parse(const std::string cmd)
     else if (args[0] == "clear")
     {
         return new Clear(cmd, window);
+    }
+    else if (args[0] == "exit")
+    {
+        return new Exit(cmd, window);
     }
     else
     {
