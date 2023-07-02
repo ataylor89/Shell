@@ -1,14 +1,14 @@
 #include "StringUtils.h"
 #include <cstring>
 
-vector<string> StringUtils::split(const string& _str, const string& _delim)
+vector<string> StringUtils::split(const string& Str, const string& Delim)
 {
     vector<string> vec;
     char *str, *token;
     const char *delim;
 
-    str = strdup(_str.c_str());
-    delim = _delim.c_str();
+    str = strdup(Str.c_str());
+    delim = Delim.c_str();
 
     token = strtok(str, delim);
 
@@ -21,14 +21,14 @@ vector<string> StringUtils::split(const string& _str, const string& _delim)
     return vec;
 }
 
-vector<string> StringUtils::split(const string& _str, const string& _delim, int limit)
+vector<string> StringUtils::split(const string& Str, const string& Delim, int limit)
 {
     vector<string> vec;
     char *str, *token;
     const char *delim;
 
-    str = strdup(_str.c_str());
-    delim = _delim.c_str();
+    str = strdup(Str.c_str());
+    delim = Delim.c_str();
 
     token = strtok(str, delim);
 
