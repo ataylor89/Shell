@@ -3,8 +3,6 @@
 
 #include "Window.h"
 #include <string>
-#include <vector>
-#include <map>
 
 class Command
 {
