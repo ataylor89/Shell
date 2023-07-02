@@ -37,7 +37,7 @@ vector<string> StringUtils::split(const string& Str, const string& Delim, int li
     str = strdup(Str.c_str());
     delim = Delim.c_str();
 
-    if (limit > 1 && (token = strtok(str, delim)))
+    if ((token = strtok(str, delim)))
     {
         vec.push_back(token);
         limit--;
