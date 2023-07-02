@@ -1,14 +1,48 @@
 #include "StringUtils.h"
+#include <cstring>
 
-std::vector<std::string> StringUtils::split(const std::string& str, char delim)
+vector<string> StringUtils::split(const string& _str, const string& _delim)
 {
-    std::vector<std::string> strs;
-    size_t start;
-    size_t end = 0;
-    while ((start = str.find_first_not_of(delim, end)) != std::string::npos)
+    vector<string> vec;
+    char *str, *token;
+    const char *delim;
+
+    str = strdup(_str.c_str());
+    delim = _delim.c_str();
+
+    token = strtok(str, delim);
+
+    while (token)
     {
-        end = str.find(delim, start);
-        strs.push_back(str.substr(start, end - start));
+        vec.push_back(string(token));
+        token = strtok(NULL, delim);
     }
-    return strs;
+
+    return vec;
+}
+
+vector<string> StringUtils::split(const string& _str, const string& _delim, int limit)
+{
+    vector<string> vec;
+    char *str, *token;
+    const char *delim;
+
+    str = strdup(_str.c_str());
+    delim = _delim.c_str();
+
+    token = strtok(str, delim);
+
+    vec.push_back(token);
+    limit--;
+    
+    while (limit > 1 && (token = strtok(NULL, delim)))
+    {
+        vec.push_back(string(token));
+        limit--;
+    }
+
+    token = strtok(NULL, "");
+
+    vec.push_back(string(token));
+    return vec;
 }
