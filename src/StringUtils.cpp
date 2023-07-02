@@ -24,6 +24,12 @@ vector<string> StringUtils::split(const string& Str, const string& Delim)
 vector<string> StringUtils::split(const string& Str, const string& Delim, int limit)
 {
     vector<string> vec;
+
+    if (limit <= 0)
+    {
+        return vec;
+    }
+
     char *str, *token;
     const char *delim;
 
