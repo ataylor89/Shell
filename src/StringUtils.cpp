@@ -25,8 +25,9 @@ vector<string> StringUtils::split(const string& Str, const string& Delim, int li
 {
     vector<string> vec;
 
-    if (limit <= 0)
+    if (limit <= 1)
     {
+        vec.push_back(Str);
         return vec;
     }
 
