@@ -51,8 +51,8 @@ bool TextArea::on_key_pressed(guint keyval, guint keycode, Gdk::ModifierType sta
 
         auto buffer = get_buffer();
         auto cursor = buffer->get_insert();
-        Gtk::TextBuffer::iterator end = buffer->get_iter_at_mark(cursor);
-        Gtk::TextBuffer::iterator start = end;
+        auto end = buffer->get_iter_at_mark(cursor);
+        auto start = end;
 
         while (start.get_char() != '\n' && start != buffer->begin())
         {
@@ -74,7 +74,7 @@ bool TextArea::on_key_pressed(guint keyval, guint keycode, Gdk::ModifierType sta
 
         auto buffer = get_buffer();
         auto cursor = buffer->get_insert();
-        Gtk::TextBuffer::iterator iter = buffer->get_iter_at_mark(cursor);
+        auto iter = buffer->get_iter_at_mark(cursor);
         iter.backward_chars(len);
 
         if (iter == buffer->begin())
