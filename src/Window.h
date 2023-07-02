@@ -16,8 +16,8 @@ public:
 private:
     Gtk::Box vbox;
     Gtk::ScrolledWindow scrolled_window;
-    TextArea *text_area;
-    Shell *shell;
+    TextArea* text_area;
+    Shell* shell;
 };
 
 #endif
