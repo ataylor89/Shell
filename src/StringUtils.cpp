@@ -42,7 +42,7 @@ vector<string> StringUtils::split(const string& Str, const string& Delim, int li
         limit--;
     }
 
-    if ((token = strtok(NULL, "")))
+    if (limit == 1 && (token = strtok(NULL, "")))
     {
         vec.push_back(token);
     }
