@@ -1,27 +1,27 @@
 #include "StringUtils.h"
 #include <cstring>
 
-vector<string> StringUtils::split(string& Str, const string& Delim)
+vector<string> StringUtils::split(string& Str, const string& Delimiters)
 {
     vector<string> buffer;
     char *str, *token;
-    const char *delim;
+    const char *delimiters;
 
     str = strdup(Str.c_str());
-    delim = Delim.c_str();
+    delimiters = Delimiters.c_str();
 
-    token = strtok(str, delim);
+    token = strtok(str, delimiters);
 
     while (token)
     {
         buffer.push_back(token);
-        token = strtok(NULL, delim);
+        token = strtok(NULL, delimiters);
     }
 
     return buffer;
 }
 
-vector<string> StringUtils::split(string& Str, const string& Delim, int limit)
+vector<string> StringUtils::split(string& Str, const string& Delimiters, int limit)
 {
     vector<string> buffer;
 
@@ -32,18 +32,18 @@ vector<string> StringUtils::split(string& Str, const string& Delim, int limit)
     }
 
     char *str, *token;
-    const char *delim;
+    const char *delimiters;
 
     str = strdup(Str.c_str());
-    delim = Delim.c_str();
+    delimiters = Delimiters.c_str();
 
-    if ((token = strtok(str, delim)))
+    if ((token = strtok(str, delimiters)))
     {
         buffer.push_back(token);
         limit--;
     }
     
-    while (limit > 1 && (token = strtok(NULL, delim)))
+    while (limit > 1 && (token = strtok(NULL, delimiters)))
     {
         buffer.push_back(token);
         limit--;
