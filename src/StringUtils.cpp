@@ -3,7 +3,7 @@
 
 vector<string> StringUtils::split(string& Str, const string& Delim)
 {
-    vector<string> vec;
+    vector<string> buffer;
     char *str, *token;
     const char *delim;
 
@@ -14,21 +14,21 @@ vector<string> StringUtils::split(string& Str, const string& Delim)
 
     while (token)
     {
-        vec.push_back(token);
+        buffer.push_back(token);
         token = strtok(NULL, delim);
     }
 
-    return vec;
+    return buffer;
 }
 
 vector<string> StringUtils::split(string& Str, const string& Delim, int limit)
 {
-    vector<string> vec;
+    vector<string> buffer;
 
     if (limit <= 1)
     {
-        vec.push_back(Str);
-        return vec;
+        buffer.push_back(Str);
+        return buffer;
     }
 
     char *str, *token;
@@ -39,20 +39,20 @@ vector<string> StringUtils::split(string& Str, const string& Delim, int limit)
 
     if ((token = strtok(str, delim)))
     {
-        vec.push_back(token);
+        buffer.push_back(token);
         limit--;
     }
     
     while (limit > 1 && (token = strtok(NULL, delim)))
     {
-        vec.push_back(token);
+        buffer.push_back(token);
         limit--;
     }
 
     if ((token = strtok(NULL, "")))
     {
-        vec.push_back(token);
+        buffer.push_back(token);
     }
     
-    return vec;
+    return buffer;
 }
