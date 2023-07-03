@@ -23,5 +23,6 @@ void Shell::exec(std::string command)
     else
     {
         cmd->exec();
+        delete cmd;
     }
 }
