@@ -14,14 +14,14 @@
  * 
  * For example,
  * 
- *      test/TestSplit "Hello world, hello solar system, hello Milky Way, hello universe." ",. " 10
+ *      test/TestSplit "Hello world, hello solar system, hello Milky Way, hello universe." ",. " 12
  * 
  * This will run two test cases.
  * 
  * In the first test case, the limit is ignored.
  * 
- * In the second test case, the string will be split on the delimiters ',' and '.' and ' ', a maximum of 9 times,
- * resulting in a vector that has a maximum size of 10.
+ * In the second test case, the string will be split on the delimiters ',' and '.' and ' ', a maximum of 11 times,
+ * resulting in a vector that has a maximum size of 12.
  * 
  * The contents of the vector are printed at the end of each test.
  */
