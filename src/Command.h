@@ -8,7 +8,8 @@ class Command
 {
 public:
     Command(std::string& cmd, Window* window);
-    virtual void exec();
+    virtual ~Command();
+    virtual void exec() = 0;
 protected:
     std::string cmd;
     Window* window;

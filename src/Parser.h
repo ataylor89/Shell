@@ -3,6 +3,7 @@
 
 #include "Window.h"
 #include "Command.h"
+#include <map>
 
 class Parser
 {
@@ -11,6 +12,8 @@ public:
     Command* parse(std::string command);
 private:
     Window* window;
+    std::map<std::string, int> cmd_map;
+
 };
 
 #endif
