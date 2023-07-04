@@ -2,7 +2,7 @@
  * To compile this file, enter the following command in the root directory of the project 
  * (where the Makefile and Readme files both reside):
  * 
- *      g++ test/TestSplit.cpp src/StringUtils.cpp -I src -o bin/TestSplit
+ *      g++ src/test/TestSplit.cpp src/main/StringUtils.cpp -I src -o bin/TestSplit
  * 
  * This should create the binary TestSplit in the bin folder.
  * 
