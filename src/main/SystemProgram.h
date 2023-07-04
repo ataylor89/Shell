@@ -1,5 +1,5 @@
-#ifndef SYSTEM_COMMAND_H
-#define SYSTEM_COMMAND_H
+#ifndef SYSTEM_PROGRAM_H
+#define SYSTEM_PROGRAM_H
 
 #include "Window.h"
 #include <string>
