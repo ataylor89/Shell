@@ -1,12 +1,12 @@
 # Terminal
 
-## Installing dependencies
+## Installing the gtkmm4 library
 
 This project depends on the gtkmm4 library. I was able to install this dependency with the command
 
     brew install gtkmm4
 
-## Building the project
+## Compiling the source code
 
 I wrote a Makefile to automate the build process. After installing the gtkmm4 dependency, the project can be built with the command
 
@@ -22,7 +22,7 @@ This runs the "clean" rule before running the "install" rule.
 
 It is also possible to compile the source files with the clang++ compiler, by editing the Makefile and substituting clang++ for g++. I have tested the build process with both the g++ and clang++ compilers.
 
-## Running the application
+## Running the executable file
 
 The Terminal application can be run with the command
 
