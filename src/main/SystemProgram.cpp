@@ -1,9 +1,9 @@
-#include "SystemCommand.h"
+#include "SystemProgram.h"
 #include <cstdlib>
 
-SystemCommand::SystemCommand(std::string& cmd, Window* window) : Command(cmd, window) {}
+SystemProgram::SystemProgram(std::string& cmd, Window* window) : Command(cmd, window) {}
 
-void SystemCommand::exec()
+void SystemProgram::exec()
 {
     FILE* pipe;
     char buffer[128];

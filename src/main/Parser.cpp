@@ -3,7 +3,7 @@
 #include "Clear.h"
 #include "SetPrefix.h"
 #include "Exit.h"
-#include "SystemCommand.h"
+#include "SystemProgram.h"
 #include "StringUtils.h"
 
 Parser::Parser(Window* window) 
@@ -44,7 +44,7 @@ Command* Parser::parse(std::string cmd)
     }
     else if (cmd_list.contains(args[0]))
     {
-        return new SystemCommand(cmd, window);
+        return new SystemProgram(cmd, window);
     }
     else
     {
