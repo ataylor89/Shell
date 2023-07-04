@@ -5,9 +5,9 @@ SystemCommand::SystemCommand(std::string& cmd, Window* window) : Command(cmd, wi
 
 void SystemCommand::exec()
 {
-    std::string output;
-    char buffer[128];
     FILE* pipe;
+    char buffer[128];
+    std::string output;
     TextArea* text_area;
 
     cmd += " 2>&1";
