@@ -1,4 +1,4 @@
-# Shell
+# Terminal
 
 ## Installing dependencies
 
@@ -12,7 +12,7 @@ I wrote a Makefile to automate the build process. After installing the gtkmm4 de
 
     make install
 
-This tells g++ to compile all of the source files, and link the object files into a binary named "Shell".
+This tells g++ to compile all of the source files, and link the object files into a binary named "Terminal".
 
 As an alternative, the project can be built with the command
 
@@ -24,13 +24,13 @@ It is also possible to compile the source files with the clang++ compiler, by ed
 
 ## Running the application
 
-The Shell program can be run with the command
+The Terminal application can be run with the command
 
-    bin/Shell
+    bin/Terminal
 
 It can also be run with the commands
 
     cd bin
-    ./Shell
+    ./Terminal
 
 The ./ prefix is Unix syntax for running an executable. This syntax is used on Unix, Linux, and MacOS.

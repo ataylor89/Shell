@@ -2,7 +2,7 @@
 
 Window::Window() : vbox(Gtk::Orientation::VERTICAL)
 {
-    set_title("Shell");
+    set_title("Terminal");
     set_default_size(800, 600);
     
     vbox.set_margin_top(20);
