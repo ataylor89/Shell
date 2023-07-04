@@ -9,18 +9,18 @@
 Parser::Parser(Window* window) 
 {
     this->window = window;
-    cmd_map["echo"] = 1;
-    cmd_map["ls"] = 1;
-    cmd_map["cat"] = 1;
-    cmd_map["mv"] = 1;
-    cmd_map["rm"] = 1;
-    cmd_map["cp"] = 1;
-    cmd_map["gcc"] = 1;
-    cmd_map["g++"] = 1;
-    cmd_map["clang++"] = 1;
-    cmd_map["java"] = 1;
-    cmd_map["python"] = 1;
-    cmd_map["git"] = 1;
+    dict["echo"] = 1;
+    dict["ls"] = 1;
+    dict["cat"] = 1;
+    dict["mv"] = 1;
+    dict["rm"] = 1;
+    dict["cp"] = 1;
+    dict["gcc"] = 1;
+    dict["g++"] = 1;
+    dict["clang++"] = 1;
+    dict["java"] = 1;
+    dict["python"] = 1;
+    dict["git"] = 1;
 }
 
 Command* Parser::parse(std::string cmd)
@@ -42,7 +42,7 @@ Command* Parser::parse(std::string cmd)
     {
         return new Exit(cmd, window);
     }
-    else if (cmd_map.contains(args[0]))
+    else if (dict.contains(args[0]))
     {
         return new SystemCommand(cmd, window);
     }
