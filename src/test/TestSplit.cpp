@@ -29,48 +29,60 @@
 #include "StringUtils.h"
 #include <iostream>
 
-int main(int argc, char **argv)
+void run_test(string& str, const string& delimiters)
 {
-    if (argc < 4)
-    {
-        printf("Usage: %s \"<string>\" \"<delimiters>\" <limit>\n", argv[0]);
-        return 0;
-    }   
-
-    string str = string(argv[1]);
-    const string delimiters = string(argv[2]);
-    int limit = atoi(argv[3]);
-
     cout << "==================================================================" << endl;
-    cout << "User inputs" << endl;
+    cout << "User inputs:" << endl;
     cout << "==================================================================" << endl;
-
     cout << "String: " << "\"" + str + "\"" << endl;
     cout << "Delimiters: " << "\"" + delimiters + "\"" << endl;
-    cout << "Limit: " << limit << endl;
-
-    vector<string> buffer;
-
     cout << "==================================================================" << endl;
     cout << "Testing the StringUtils::split(str, delimiters) function..." << endl;
     cout << "==================================================================" << endl;
-
-    buffer = StringUtils::split(str, delimiters);
-
+    vector<string> buffer = StringUtils::split(str, delimiters);
     for (int i = 0; i < buffer.size(); i++)
     {
         cout << i << ": " << buffer[i] << endl;
     }
+}
 
+void run_test(string& str, const string& delimiters, int limit)
+{
+    cout << "==================================================================" << endl;
+    cout << "User inputs:" << endl;
+    cout << "==================================================================" << endl;
+    cout << "String: " << "\"" + str + "\"" << endl;
+    cout << "Delimiters: " << "\"" + delimiters + "\"" << endl;
+    cout << "Limit: " << limit << endl;
     cout << "==================================================================" << endl;
     cout << "Testing the StringUtils::split(str, delimiters, limit) function..." << endl;
     cout << "==================================================================" << endl;
-
-    buffer = StringUtils::split(str, delimiters, limit);
-
+    vector<string> buffer = StringUtils::split(str, delimiters, limit);
     for (int i = 0; i < buffer.size(); i++)
     {
         cout << i << ": " << buffer[i] << endl;
+    }
+}
+
+int main(int argc, char **argv)
+{
+    if (argc < 3 || argc > 4)
+    {
+        printf("Usage: %s <string> <delimiters> [<limit>]\n", argv[0]);
+        return 0;
+    }
+
+    string str = string(argv[1]);
+    const string delimiters = string(argv[2]);
+
+    if (argc == 3)
+    {
+        run_test(str, delimiters);
+    }
+    else if (argc == 4)
+    {
+        int limit = atoi(argv[3]);
+        run_test(str, delimiters, limit);
     }
 
     return 0;
