@@ -79,7 +79,7 @@ int main(int argc, char **argv)
     {
         run_test(str, delimiters);
     }
-    else if (argc == 4)
+    else
     {
         int limit = atoi(argv[3]);
         run_test(str, delimiters, limit);
