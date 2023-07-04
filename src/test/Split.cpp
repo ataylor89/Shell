@@ -1,29 +1,21 @@
 /*
- * To compile this file, enter the following command in the root directory of the project 
- * (where the Makefile and Readme files both reside):
+ * To compile this file, run the following command in the root directory of the project (where the Makefile resides):
+ *
+ *      make tests
  * 
- *      g++ src/test/TestSplit.cpp src/main/StringUtils.cpp -I src/main -o bin/TestSplit
+ * This command will make all of the tests, and write the binaries to a tests folder.
  * 
- * This should create the binary TestSplit in the bin folder.
+ * Now that the tests have been installed, let's try an example.
  * 
- * The binary can be run with a command of the form
+ *      tests/Split "Hello world, how are you? What is the weather like today?" ",? "
  * 
- *      bin/TestSplit "<string>" "<delimiters>" <limit>
+ * This will split the string on the delimiters "," and "?" and " ", and output an array of substrings.
  * 
- * where <string> and <delimiters> are both strings enclosed in double quotes, and <limit> is an integer.
+ * We can try another example.
  * 
- * For example,
+ *      tests/Split "Hello world, how are you? What is the weather like today?" ",? " 10
  * 
- *      bin/TestSplit "Hello world, hello solar system, hello Milky Way, hello universe." ",. " 12
- * 
- * This will run two test cases.
- * 
- * In the first test case, the limit is ignored.
- * 
- * In the second test case, the string will be split on the delimiters ',' and '.' and ' ', a maximum of 11 times,
- * resulting in a vector that has a maximum size of 12.
- * 
- * The contents of the vector are printed at the end of each test.
+ * This will split the string a maximum of 9 times, and output an array that has a maximum size of 10.
  */
 
 #include "StringUtils.h"
