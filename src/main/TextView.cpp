@@ -1,6 +1,6 @@
-#include "TextArea.h"
+#include "TextView.h"
 
-TextArea::TextArea(Window* window)
+TextView::TextView(Window* window)
 {
     this->window = window;
 
@@ -15,11 +15,11 @@ TextArea::TextArea(Window* window)
 
     auto controller = Gtk::EventControllerKey::create();
     controller->signal_key_pressed().connect(
-        sigc::mem_fun(*this, &TextArea::on_key_pressed), false);
+        sigc::mem_fun(*this, &TextView::on_key_pressed), false);
     add_controller(controller);
 }
 
-void TextArea::clear()
+void TextView::clear()
 {
     auto buffer = get_buffer();
     Settings* settings = window->get_settings();
@@ -27,13 +27,13 @@ void TextArea::clear()
     buffer->set_text(prefix);
 }
 
-void TextArea::append(std::string text)
+void TextView::append(std::string text)
 {
     auto buffer = get_buffer();
     buffer->insert_at_cursor(text);
 }
 
-void TextArea::append_prefix()
+void TextView::append_prefix()
 {
     auto buffer = get_buffer();
     Settings* settings = window->get_settings();
@@ -41,7 +41,7 @@ void TextArea::append_prefix()
     buffer->insert_at_cursor(prefix);
 }
 
-bool TextArea::on_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state)
+bool TextView::on_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state)
 {
     if (keyval == GDK_KEY_Return)
     {

@@ -9,16 +9,16 @@ void Shell::exec(std::string command)
 {
     Parser* parser;
     Command* cmd;
-    TextArea* text_area;
+    TextView* text_view;
 
     parser = window->get_parser();
     cmd = parser->parse(command);
     
     if (cmd == NULL)
     {
-        text_area = window->get_text_area();
-        text_area->append("\n");
-        text_area->append_prefix();
+        text_view = window->get_text_view();
+        text_view->append("\n");
+        text_view->append_prefix();
     }
     else
     {

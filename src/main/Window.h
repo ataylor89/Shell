@@ -3,14 +3,14 @@
 
 class Window;
 class Settings;
-class TextArea;
+class TextView;
 class Shell;
 class Parser;
 class Command;
 
 #include <gtkmm.h>
 #include "Settings.h"
-#include "TextArea.h"
+#include "TextView.h"
 #include "Shell.h"
 #include "Parser.h"
 
@@ -19,14 +19,14 @@ class Window : public Gtk::Window
 public:
     Window();
     Settings* get_settings();
-    TextArea* get_text_area();
+    TextView* get_text_view();
     Shell* get_shell();
     Parser* get_parser();
 private:
     Gtk::Box vbox;
     Gtk::ScrolledWindow scrolled_window;
     Settings* settings;
-    TextArea* text_area;
+    TextView* text_view;
     Shell* shell;
     Parser* parser;
 };

@@ -7,7 +7,7 @@ void SetPrefix::exec()
 {
     std::vector<std::string> args;
     Settings* settings;
-    TextArea* text_area;
+    TextView* text_view;
 
     args = StringUtils::split(cmd, " ", 2);
 
@@ -17,7 +17,7 @@ void SetPrefix::exec()
         settings->set_prefix(args[1] + " ");
     }
 
-    text_area = window->get_text_area();
-    text_area->append("\n");
-    text_area->append_prefix();
+    text_view = window->get_text_view();
+    text_view->append("\n");
+    text_view->append_prefix();
 }

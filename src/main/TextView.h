@@ -3,10 +3,10 @@
 
 #include "Window.h"
 
-class TextArea : public Gtk::TextView
+class TextView : public Gtk::TextView
 {
 public:
-    TextArea(Window* window);
+    TextView(Window* window);
     void clear();
     void append(std::string text);
     void append_prefix();

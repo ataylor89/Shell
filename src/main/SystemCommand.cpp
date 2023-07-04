@@ -8,7 +8,7 @@ void SystemCommand::exec()
     FILE* pipe;
     char buffer[128];
     std::string output;
-    TextArea* text_area;
+    TextView* text_view;
 
     cmd += " 2>&1";
 
@@ -29,7 +29,7 @@ void SystemCommand::exec()
         output += "\n";
     }
 
-    text_area = window->get_text_area();
-    text_area->append("\n" + output);
-    text_area->append_prefix();
+    text_view = window->get_text_view();
+    text_view->append("\n" + output);
+    text_view->append_prefix();
 }
