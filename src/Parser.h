@@ -12,7 +12,7 @@ public:
     Command* parse(std::string command);
 private:
     Window* window;
-    std::map<std::string, int> dict;
+    std::map<std::string, int> cmd_list;
 
 };
 

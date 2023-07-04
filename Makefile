@@ -1,6 +1,5 @@
 clean:
-	if [ -f bin/Shell ]; then rm bin/Shell; fi;
-	if [ -d bin ]; then rmdir bin; fi
+	if [ -d bin ]; then rm bin/*; rmdir bin; fi
 
 install:
 	if [ ! -d bin ]; then mkdir bin; fi;
