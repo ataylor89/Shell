@@ -2,19 +2,19 @@
  * To compile this file, enter the following command in the root directory of the project 
  * (where the Makefile and Readme files both reside):
  * 
- *      g++ test/TestSplit.cpp src/StringUtils.cpp -I src -o test/TestSplit
+ *      g++ test/TestSplit.cpp src/StringUtils.cpp -I src -o bin/TestSplit
  * 
- * This should create the binary TestSplit in the test folder.
+ * This should create the binary TestSplit in the bin folder.
  * 
  * The binary can be run with a command of the form
  * 
- *      test/TestSplit "<string>" "<delimiters>" <limit>
+ *      bin/TestSplit "<string>" "<delimiters>" <limit>
  * 
  * where <string> and <delimiters> are both strings enclosed in double quotes, and <limit> is an integer.
  * 
  * For example,
  * 
- *      test/TestSplit "Hello world, hello solar system, hello Milky Way, hello universe." ",. " 12
+ *      bin/TestSplit "Hello world, hello solar system, hello Milky Way, hello universe." ",. " 12
  * 
  * This will run two test cases.
  * 
