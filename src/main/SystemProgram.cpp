@@ -1,13 +1,13 @@
 #include "SystemProgram.h"
 #include <cstdlib>
 
-SystemProgram::SystemProgram(string& cmd, Window* window) : Command(cmd, window) {}
+SystemProgram::SystemProgram(std::string& cmd, Window* window) : Command(cmd, window) {}
 
 void SystemProgram::exec()
 {
     FILE* stream;
     char buffer[128];
-    string output;
+    std::string output;
     TextView* text_view;
 
     cmd += " 2>&1";

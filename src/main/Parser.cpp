@@ -11,11 +11,11 @@ Parser::Parser(Window* window)
     this->window = window;
 }
 
-Command* Parser::parse(string cmd)
+Command* Parser::parse(std::string cmd)
 {
     trim(cmd);
 
-    vector<string> args = split(cmd, " ");
+    std::vector<std::string> args = split(cmd, " ");
 
     if (args.empty())
     {

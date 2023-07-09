@@ -71,7 +71,7 @@ void print_hexdump(char *str, int size)
     fwrite(dump->buffer, 1, dump->size, stdout);
 }
 
-void print_hexdump(string& Str)
+void print_hexdump(std::string& Str)
 {
     char *str;
     str = strdup(Str.c_str());

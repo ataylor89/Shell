@@ -5,16 +5,14 @@
 #include "Command.h"
 #include <map>
 
-using namespace std;
-
 class Parser
 {
 public:
     Parser(Window* window);
-    Command* parse(string command);
+    Command* parse(std::string command);
 private:
     Window* window;
-    map<string, int> cmd_list;
+    std::map<std::string, int> cmd_list;
 
 };
 

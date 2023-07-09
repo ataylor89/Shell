@@ -10,7 +10,7 @@ int main(int argc, char** argv)
         return 0;
     }
 
-    string input(argv[1]);
+    std::string input(argv[1]);
 
     cout << "User input: " << input << endl;
     print_hexdump(input);

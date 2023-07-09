@@ -3,8 +3,6 @@
 
 #include <string>
 
-using namespace std;
-
 typedef struct
 {
     char *buffer;
@@ -13,6 +11,6 @@ typedef struct
 
 HEXDUMP* hexdump(char* str, int size);
 void print_hexdump(char* str, int size);
-void print_hexdump(string& str);
+void print_hexdump(std::string& str);
 
 #endif
