@@ -11,7 +11,7 @@ Parser::Parser(Window* window)
     this->window = window;
 }
 
-Command* Parser::parse(std::string cmd)
+Command* Parser::parse(string cmd)
 {
     trim(cmd);
 
