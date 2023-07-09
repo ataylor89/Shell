@@ -2,16 +2,6 @@
 #include "Hexdump.h"
 #include <iostream>
 
-void print_hexdump(string& Str)
-{
-    HEXDUMP *dump;
-    char *str;
-    str = strdup(Str.c_str());
-    dump = hexdump(str, strlen(str));
-    fwrite(dump->buffer, 1, dump->size, stdout);
-    printf("\n");
-}
-
 int main(int argc, char** argv)
 {
     if (argc != 2)
@@ -24,11 +14,13 @@ int main(int argc, char** argv)
 
     cout << "User input: " << input << endl;
     print_hexdump(input);
+    cout << endl;
 
     trim(input);
 
     cout << "After trim: " << input << endl;
     print_hexdump(input);
+    cout << endl;
     
     return 0;
 }

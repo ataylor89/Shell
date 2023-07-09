@@ -1,18 +1,19 @@
 #include "Hexdump.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <cctype>
 
-HEXDUMP* hexdump(char* str, int size, int line_pos)
+HEXDUMP* hexdump(char* str, int size)
 {
     HEXDUMP *dump;
     char *ptr;
-    int i, j, num_spaces;
+    int i, j, line_pos, num_spaces;
 
     dump = (HEXDUMP *) malloc(sizeof(HEXDUMP));
     dump->buffer = (char *) malloc(sizeof(char) * size * 10);
     ptr = dump->buffer;
+    line_pos = 0;
 
     for (i = 0; i < size;)
     {
@@ -61,4 +62,18 @@ HEXDUMP* hexdump(char* str, int size, int line_pos)
 
     dump->size = ptr - dump->buffer;
     return dump;
+}
+
+void print_hexdump(char *str, int size)
+{
+    HEXDUMP* dump;
+    dump = hexdump(str, size);
+    fwrite(dump->buffer, 1, dump->size, stdout);
+}
+
+void print_hexdump(string& Str)
+{
+    char *str;
+    str = strdup(Str.c_str());
+    print_hexdump(str, Str.length());
 }

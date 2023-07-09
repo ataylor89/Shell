@@ -19,18 +19,7 @@
  */
 
 #include "StringUtils.h"
-#include "Hexdump.h"
 #include <iostream>
-
-void print_hexdump(string& Str)
-{
-    HEXDUMP *dump;
-    char *str;
-    str = strdup(Str.c_str());
-    dump = hexdump(str, strlen(str));
-    fwrite(dump->buffer, 1, dump->size, stdout);
-    printf("\n");
-}
 
 void run_test(string& str, const string& delimiters)
 {
@@ -46,7 +35,6 @@ void run_test(string& str, const string& delimiters)
     for (int i = 0; i < buffer.size(); i++)
     {
         cout << i << ": " << buffer[i] << endl;
-        print_hexdump(buffer[i]);
     }
 }
 
@@ -65,7 +53,6 @@ void run_test(string& str, const string& delimiters, int limit)
     for (int i = 0; i < buffer.size(); i++)
     {
         cout << i << ": " << buffer[i] << endl;
-        print_hexdump(buffer[i]);
     }
 }
 

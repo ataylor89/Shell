@@ -10,11 +10,7 @@ int main(int argc, char **argv)
         return 0;
     }
 
-    HEXDUMP *dump;
-
-    dump = hexdump(argv[1], strlen(argv[1]));
-
-    fwrite(dump->buffer, 1, dump->size, stdout);
+    print_hexdump(argv[1], strlen(argv[1]));
 
     return 0;
 }
