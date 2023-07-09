@@ -6,10 +6,8 @@
 
 using namespace std;
 
-namespace StringUtils
-{
-    vector<string> split(string& str, const string& delimiters);
-    vector<string> split(string& str, const string& delimiters, int limit);
-};
+vector<string> split(string& str, const string& delimiters);
+vector<string> split(string& str, const string& delimiters, int limit);
+string trim(string& str);
 
 #endif

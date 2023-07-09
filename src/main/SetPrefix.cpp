@@ -1,15 +1,15 @@
 #include "SetPrefix.h"
 #include "StringUtils.h"
 
-SetPrefix::SetPrefix(std::string& cmd, Window* window) : Command(cmd, window) {}
+SetPrefix::SetPrefix(string& cmd, Window* window) : Command(cmd, window) {}
 
 void SetPrefix::exec()
 {
-    std::vector<std::string> args;
+    vector<string> args;
     Settings* settings;
     TextView* text_view;
 
-    args = StringUtils::split(cmd, " ", 2);
+    args = split(cmd, " ", 2);
 
     if (args.size() == 2)
     {

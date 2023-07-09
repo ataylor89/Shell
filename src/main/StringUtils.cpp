@@ -1,7 +1,7 @@
 #include "StringUtils.h"
 #include <cstring>
 
-vector<string> StringUtils::split(string& Str, const string& Delimiters)
+vector<string> split(string& Str, const string& Delimiters)
 {
     vector<string> buffer;
     char *str, *token;
@@ -21,7 +21,7 @@ vector<string> StringUtils::split(string& Str, const string& Delimiters)
     return buffer;
 }
 
-vector<string> StringUtils::split(string& Str, const string& Delimiters, int limit)
+vector<string> split(string& Str, const string& Delimiters, int limit)
 {
     vector<string> buffer;
 
@@ -55,4 +55,25 @@ vector<string> StringUtils::split(string& Str, const string& Delimiters, int lim
     }
     
     return buffer;
+}
+
+string trim(string& str)
+{
+    size_t pos;
+
+    pos = str.find_first_not_of(' ');
+
+    if (pos > 0)
+    {
+        str.erase(0, pos);
+    }
+
+    pos = str.find_last_not_of(' ');
+
+    if (pos < str.length() - 1)
+    {
+        str.erase(pos + 1, str.length() - 1 - pos);
+    }
+
+    return str;
 }

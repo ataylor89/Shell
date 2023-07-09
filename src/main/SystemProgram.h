@@ -4,10 +4,12 @@
 #include "Window.h"
 #include <string>
 
+using namespace std;
+
 class SystemProgram : public Command
 {
 public:
-    SystemProgram(std::string& cmd, Window* window);
+    SystemProgram(string& cmd, Window* window);
     void exec();
 };
 

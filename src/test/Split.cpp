@@ -19,7 +19,18 @@
  */
 
 #include "StringUtils.h"
+#include "Hexdump.h"
 #include <iostream>
+
+void print_hexdump(string& Str)
+{
+    HEXDUMP *dump;
+    char *str;
+    str = strdup(Str.c_str());
+    dump = hexdump(str, strlen(str));
+    fwrite(dump->buffer, 1, dump->size, stdout);
+    printf("\n");
+}
 
 void run_test(string& str, const string& delimiters)
 {
@@ -29,12 +40,13 @@ void run_test(string& str, const string& delimiters)
     cout << "String: " << "\"" + str + "\"" << endl;
     cout << "Delimiters: " << "\"" + delimiters + "\"" << endl;
     cout << "==================================================================" << endl;
-    cout << "Testing the StringUtils::split(str, delimiters) function..." << endl;
+    cout << "Testing the split(str, delimiters) function..." << endl;
     cout << "==================================================================" << endl;
-    vector<string> buffer = StringUtils::split(str, delimiters);
+    vector<string> buffer = split(str, delimiters);
     for (int i = 0; i < buffer.size(); i++)
     {
         cout << i << ": " << buffer[i] << endl;
+        print_hexdump(buffer[i]);
     }
 }
 
@@ -47,12 +59,13 @@ void run_test(string& str, const string& delimiters, int limit)
     cout << "Delimiters: " << "\"" + delimiters + "\"" << endl;
     cout << "Limit: " << limit << endl;
     cout << "==================================================================" << endl;
-    cout << "Testing the StringUtils::split(str, delimiters, limit) function..." << endl;
+    cout << "Testing the split(str, delimiters, limit) function..." << endl;
     cout << "==================================================================" << endl;
-    vector<string> buffer = StringUtils::split(str, delimiters, limit);
+    vector<string> buffer = split(str, delimiters, limit);
     for (int i = 0; i < buffer.size(); i++)
     {
         cout << i << ": " << buffer[i] << endl;
+        print_hexdump(buffer[i]);
     }
 }
 

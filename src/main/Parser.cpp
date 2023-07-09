@@ -9,23 +9,14 @@
 Parser::Parser(Window* window) 
 {
     this->window = window;
-    cmd_list["echo"] = 1;
-    cmd_list["ls"] = 1;
-    cmd_list["cat"] = 1;
-    cmd_list["mv"] = 1;
-    cmd_list["rm"] = 1;
-    cmd_list["cp"] = 1;
-    cmd_list["gcc"] = 1;
-    cmd_list["g++"] = 1;
-    cmd_list["clang++"] = 1;
-    cmd_list["java"] = 1;
-    cmd_list["python"] = 1;
-    cmd_list["git"] = 1;
 }
 
 Command* Parser::parse(std::string cmd)
 {
-    std::vector<std::string> args = StringUtils::split(cmd, " ");
+    trim(cmd);
+
+    vector<string> args = split(cmd, " ");
+
     if (args.empty())
     {
         return NULL;
@@ -42,8 +33,9 @@ Command* Parser::parse(std::string cmd)
     {
         return new Exit(cmd, window);
     }
-    else if (cmd_list.contains(args[0]))
+    else if (args[0][0] == '*' && args[0].length() > 1)
     {
+        cmd.erase(0, 1);
         return new SystemProgram(cmd, window);
     }
     else

@@ -1,28 +1,28 @@
 #include "SystemProgram.h"
 #include <cstdlib>
 
-SystemProgram::SystemProgram(std::string& cmd, Window* window) : Command(cmd, window) {}
+SystemProgram::SystemProgram(string& cmd, Window* window) : Command(cmd, window) {}
 
 void SystemProgram::exec()
 {
-    FILE* pipe;
+    FILE* stream;
     char buffer[128];
-    std::string output;
+    string output;
     TextView* text_view;
 
     cmd += " 2>&1";
 
-    if ((pipe = popen(cmd.c_str(), "r")) == NULL)
+    if ((stream = popen(cmd.c_str(), "r")) == NULL)
     {
         return;
     }
 
-    while (fgets(buffer, 128, pipe))
+    while (fgets(buffer, 128, stream))
     {
         output += buffer;
     }
 
-    pclose(pipe);
+    pclose(stream);
 
     if (!output.empty() && output.back() != '\n') 
     {
