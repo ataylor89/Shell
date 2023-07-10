@@ -39,12 +39,18 @@ void TextView::append(std::string text)
 {
     auto buffer = get_buffer();
     buffer->insert_at_cursor(text);
+    
+    auto cursor = buffer->get_insert();
+    scroll_to(cursor);
 }
 
 void TextView::append(char* text, int length)
 {
     auto buffer = get_buffer();
     buffer->insert_at_cursor(text, text + length - 1);
+
+    auto cursor = buffer->get_insert();
+    scroll_to(cursor);
 }
 
 void TextView::append_prefix()
@@ -53,6 +59,9 @@ void TextView::append_prefix()
     Settings* settings = window->get_settings();
     std::string prefix = settings->get_prefix();
     buffer->insert_at_cursor(prefix);
+
+    auto cursor = buffer->get_insert();
+    scroll_to(cursor);
 }
 
 bool TextView::on_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state)
