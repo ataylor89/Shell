@@ -69,7 +69,6 @@ void Cat::exec()
 
     if (iter.get_char() != '\n')
     {
-        printf("Char at cursor is %d\n", iter.get_char());
         text_view->append("\n");
     }
 

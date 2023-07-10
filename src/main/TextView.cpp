@@ -6,6 +6,8 @@ TextView::TextView(Window* window)
 
     set_editable(true);
     set_wrap_mode(Gtk::WrapMode::WORD_CHAR);
+    set_monospace(true);
+    set_name("TextView");
 
     auto buffer = Gtk::TextBuffer::create();
     Settings* settings = window->get_settings();
@@ -17,6 +19,12 @@ TextView::TextView(Window* window)
     controller->signal_key_pressed().connect(
         sigc::mem_fun(*this, &TextView::on_key_pressed), false);
     add_controller(controller);
+
+    auto context = get_style_context();
+    auto provider = Gtk::CssProvider::create();
+    auto file = Gio::File::create_for_path("src/main/Stylesheet.css");
+    provider->load_from_file(file);
+    context->add_provider(provider, 1);
 }
 
 void TextView::clear()
