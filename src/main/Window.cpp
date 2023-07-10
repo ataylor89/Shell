@@ -4,11 +4,6 @@ Window::Window() : vbox(Gtk::Orientation::VERTICAL)
 {
     set_title("Terminal");
     set_default_size(1000, 700);
-    
-    vbox.set_margin_top(10);
-    vbox.set_margin_start(10);
-    vbox.set_margin_end(10);
-    vbox.set_margin_bottom(10);
     set_child(vbox);
 
     settings = new Settings;

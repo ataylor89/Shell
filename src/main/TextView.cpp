@@ -7,6 +7,10 @@ TextView::TextView(Window* window)
     set_editable(true);
     set_wrap_mode(Gtk::WrapMode::WORD_CHAR);
     set_monospace(true);
+    set_top_margin(5);
+    set_left_margin(5);
+    set_bottom_margin(5);
+    set_right_margin(5);
     set_name("TextView");
 
     auto buffer = Gtk::TextBuffer::create();
@@ -39,7 +43,7 @@ void TextView::append(std::string text)
 {
     auto buffer = get_buffer();
     buffer->insert_at_cursor(text);
-    
+
     auto cursor = buffer->get_insert();
     scroll_to(cursor);
 }
