@@ -1,5 +1,5 @@
-#ifndef HEX_DUMP_H
-#define HEX_DUMP_H
+#ifndef HEXDUMP_H
+#define HEXDUMP_H
 
 #include "Command.h"
 
