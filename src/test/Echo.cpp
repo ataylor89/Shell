@@ -1,3 +1,4 @@
+#include "StringUtils.h"
 #include <sys/types.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -5,7 +6,6 @@
 #include <string.h>
 #include <unistd.h>
 #include <iostream>
-#include "Hexdump.h"
 
 int main(int argc, char** argv)
 {

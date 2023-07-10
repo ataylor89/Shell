@@ -1,79 +1,84 @@
 #include "Hexdump.h"
+#include "StringUtils.h"
 #include <cstdio>
 #include <cstdlib>
-#include <cstring>
-#include <cctype>
 
-HEXDUMP* hexdump(char* str, int size)
+#define PARTITION_LENGTH 512
+
+Hexdump::Hexdump(std::string& cmd, Window* window) : Command(cmd, window)
 {
-    HEXDUMP *dump;
-    char *ptr;
-    int i, j, line_pos, num_spaces;
-
-    dump = (HEXDUMP *) malloc(sizeof(HEXDUMP));
-    dump->buffer = (char *) malloc(sizeof(char) * size * 10);
-    ptr = dump->buffer;
-    line_pos = 0;
-
-    for (i = 0; i < size;)
-    {
-        sprintf(ptr, "%08x: ", line_pos);
-
-        ptr += 10;
-
-        for (j = 0; j < 16; j++)
-        { 
-            if (i + j > size - 1)
-            {
-                num_spaces = (j % 2 == 1) ? 3 : 2;
-                sprintf(ptr, "%*c", num_spaces, ' ');
-                ptr += num_spaces;
-            }
-            else if (j % 2 == 1)
-            {
-                sprintf(ptr, "%02hhx ", str[i + j]);
-                ptr += 3;
-            }
-            else
-            {
-                sprintf(ptr, "%02hhx", str[i + j]);
-                ptr += 2;
-            }
-        }
-
-        for (j = 0; j < 16 && i + j < size; j++)
-        {
-            char ch = isprint(str[i + j]) ? str[i + j] : '.';
-            if (j == 15 && i + j < size - 1)
-            {
-                sprintf(ptr, "%c\n", ch);
-                ptr += 2;
-            }
-            else
-            {
-                sprintf(ptr, "%c", ch);
-                ptr++;
-            }
-        }
-
-        i += j;
-        line_pos += 16;
-    }
-
-    dump->size = ptr - dump->buffer;
-    return dump;
+    text_view = window->get_text_view();
 }
 
-void print_hexdump(char *str, int size)
+void Hexdump::_exec(const char* filename)
 {
     HEXDUMP* dump;
-    dump = hexdump(str, size);
-    fwrite(dump->buffer, 1, dump->size, stdout);
+    FILE* file;
+    int offset, filesize, n;
+    char *buffer;
+
+    if ((file = fopen(filename, "r")) == NULL)
+    {
+        text_view->append("Error opening file.");
+        return;
+    }
+
+    offset = 0;
+
+    fseek(file, 0, SEEK_END);
+    filesize = ftell(file);
+    fseek(file, 0, SEEK_SET);
+
+    buffer = (char *) malloc(PARTITION_LENGTH);
+
+    while (offset < filesize)
+    {
+        n = (filesize - offset) < PARTITION_LENGTH ? filesize - offset : PARTITION_LENGTH;
+
+        if (fread(buffer, 1, n, file) != n)
+        {
+            text_view->append("Error reading from file.");
+            return;
+        }
+
+        dump = hexdump(buffer, n, offset);
+        string str(dump->buffer, dump->size);
+
+        text_view->append(str);
+
+        offset += n;
+
+        if (offset < filesize)
+        {
+            text_view->append("\n*\n");
+        }
+    }
+
+    fclose(file);
+    free(dump);
+    free(buffer);
 }
 
-void print_hexdump(std::string& Str)
+void Hexdump::exec()
 {
-    char *str;
-    str = strdup(Str.c_str());
-    print_hexdump(str, Str.length());
+    std::vector<std::string> args;
+
+    args = split(cmd, " ", 2);
+    text_view->append("\n");
+
+    if (args.size() == 2)
+    {
+        _exec(args[1].c_str());
+    }
+
+    auto buffer = text_view->get_buffer();
+    auto cursor = buffer->get_insert();
+    auto iter = buffer->get_iter_at_mark(cursor);
+
+    if (iter.get_char() != '\n')
+    {
+        text_view->append("\n");
+    }
+
+    text_view->append_prefix();
 }

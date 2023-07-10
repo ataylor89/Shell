@@ -2,6 +2,7 @@
 #include "Command.h"
 #include "Clear.h"
 #include "SetPrefix.h"
+#include "Hexdump.h"
 #include "Exit.h"
 #include "SystemProgram.h"
 #include "StringUtils.h"
@@ -28,6 +29,10 @@ Command* Parser::parse(std::string cmd)
     else if (args[0] == "setprefix")
     {
         return new SetPrefix(cmd, window);
+    }
+    else if (args[0] == "hexdump")
+    {
+        return new Hexdump(cmd, window);
     }
     else if (args[0] == "exit")
     {

@@ -1,16 +1,16 @@
 #ifndef HEX_DUMP_H
 #define HEX_DUMP_H
 
-#include <string>
+#include "Command.h"
 
-typedef struct
+class Hexdump : public Command
 {
-    char *buffer;
-    int size;
-} HEXDUMP;
-
-HEXDUMP* hexdump(char* str, int size);
-void print_hexdump(char* str, int size);
-void print_hexdump(std::string& str);
+public:
+    Hexdump(std::string& cmd, Window* window);
+    void exec();
+private:
+    void _exec(const char* filename);
+    TextView* text_view;
+};
 
 #endif
