@@ -28,7 +28,7 @@ TextView::TextView(Window* window)
     auto provider = Gtk::CssProvider::create();
     auto file = Gio::File::create_for_path("src/main/Stylesheet.css");
     provider->load_from_file(file);
-    context->add_provider(provider, 1);
+    context->add_provider(provider, GTK_STYLE_PROVIDER_PRIORITY_USER);
 }
 
 void TextView::clear()
