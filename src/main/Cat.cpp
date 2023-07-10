@@ -1,25 +1,24 @@
-#include "Hexdump.h"
+#include "Cat.h"
 #include "StringUtils.h"
 #include <cstdio>
 #include <cstdlib>
 
-#define PARTITION_LENGTH 512
+#define PARTITION_LENGTH 4096
 
-Hexdump::Hexdump(std::string& cmd, Window* window) : Command(cmd, window)
+Cat::Cat(std::string& cmd, Window* window) : Command(cmd, window)
 {
     text_view = window->get_text_view();
 }
 
-void Hexdump::exec(const char* filename)
+void Cat::exec(const char* filename)
 {
-    HEXDUMP* dump;
     FILE* file;
     int offset, filesize, n;
     char *buffer;
 
     if ((file = fopen(filename, "r")) == NULL)
     {
-        text_view->append("Error opening file.");
+        text_view->append("Error opening file");
         return;
     }
 
@@ -34,31 +33,23 @@ void Hexdump::exec(const char* filename)
     while (offset < filesize)
     {
         n = (filesize - offset) < PARTITION_LENGTH ? filesize - offset : PARTITION_LENGTH;
-
+         
         if (fread(buffer, 1, n, file) != n)
         {
-            text_view->append("Error reading from file.");
+            text_view->append("Error reading from file");
             return;
         }
 
-        dump = hexdump(buffer, n, offset);
-
-        text_view->append(dump->buffer, dump->size);
+        text_view->append(buffer, n);
 
         offset += n;
-
-        if (offset < filesize)
-        {
-            text_view->append("\n*\n");
-        }
     }
 
     fclose(file);
-    free(dump);
     free(buffer);
 }
 
-void Hexdump::exec()
+void Cat::exec()
 {
     std::vector<std::string> args;
 
@@ -78,6 +69,7 @@ void Hexdump::exec()
 
     if (iter.get_char() != '\n')
     {
+        printf("Char at cursor is %d\n", iter.get_char());
         text_view->append("\n");
     }
 

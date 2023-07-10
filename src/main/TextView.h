@@ -9,6 +9,7 @@ public:
     TextView(Window* window);
     void clear();
     void append(std::string text);
+    void append(char* text, int length);
     void append_prefix();
 private:
     bool on_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state);

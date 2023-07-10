@@ -33,6 +33,12 @@ void TextView::append(std::string text)
     buffer->insert_at_cursor(text);
 }
 
+void TextView::append(char* text, int length)
+{
+    auto buffer = get_buffer();
+    buffer->insert_at_cursor(text, text + length - 1);
+}
+
 void TextView::append_prefix()
 {
     auto buffer = get_buffer();

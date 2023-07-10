@@ -1,12 +1,12 @@
-#ifndef HEXDUMP_H
-#define HEXDUMP_H
+#ifndef CAT_H
+#define CAT_H
 
 #include "Command.h"
 
-class Hexdump : public Command
+class Cat : public Command
 {
 public:
-    Hexdump(std::string& cmd, Window* window);
+    Cat(std::string& cmd, Window* window);
     void exec();
 private:
     void exec(const char* filename);
