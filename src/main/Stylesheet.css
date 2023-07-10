@@ -1,5 +1,5 @@
 #TextView {
-    font-family: "Consolas";
+    font-family: "Consolas", monospace;
     font-size: 18px;
     color: white;
     background-color: #8895E6;

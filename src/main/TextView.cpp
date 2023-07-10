@@ -6,7 +6,6 @@ TextView::TextView(Window* window)
 
     set_editable(true);
     set_wrap_mode(Gtk::WrapMode::WORD_CHAR);
-    set_monospace(true);
     set_top_margin(5);
     set_left_margin(5);
     set_bottom_margin(5);
