@@ -44,7 +44,7 @@ void TextView::append(std::string text)
     buffer->insert_at_cursor(text);
 
     auto cursor = buffer->get_insert();
-    scroll_to(cursor);
+    scroll_to(cursor, 0.01);
 }
 
 void TextView::append(char* text, int length)
@@ -53,7 +53,7 @@ void TextView::append(char* text, int length)
     buffer->insert_at_cursor(text, text + length - 1);
 
     auto cursor = buffer->get_insert();
-    scroll_to(cursor);
+    scroll_to(cursor, 0.01);
 }
 
 void TextView::append_prefix()
@@ -64,7 +64,7 @@ void TextView::append_prefix()
     buffer->insert_at_cursor(prefix);
 
     auto cursor = buffer->get_insert();
-    scroll_to(cursor);
+    scroll_to(cursor, 0.01);
 }
 
 bool TextView::on_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state)
