@@ -1,6 +1,6 @@
-#include "CmdList.h"
+#include "CommandList.h"
 
-CmdList::CmdList() : map<string, CommandType>()
+CommandList::CommandList() : map<string, CommandType>()
 {
     insert({"clear",        CommandType::CLEAR});
     insert({"setprefix",    CommandType::SETPREFIX});

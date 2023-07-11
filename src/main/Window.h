@@ -4,7 +4,7 @@
 class Window;
 class Settings;
 class TextView;
-class CmdList;
+class CommandList;
 class Shell;
 class Parser;
 struct ParseTree;
@@ -15,7 +15,7 @@ class Command;
 #include "TextView.h"
 #include "Shell.h"
 #include "Parser.h"
-#include "CmdList.h"
+#include "CommandList.h"
 
 class Window : public Gtk::Window
 {
@@ -23,7 +23,7 @@ public:
     Window();
     Settings* get_settings();
     TextView* get_text_view();
-    CmdList* get_cmd_list();
+    CommandList* get_cmd_list();
     Shell* get_shell();
     Parser* get_parser();
 private:
@@ -31,7 +31,7 @@ private:
     Gtk::ScrolledWindow scrolled_window;
     Settings* settings;
     TextView* text_view;
-    CmdList* cmd_list;
+    CommandList* cmd_list;
     Shell* shell;
     Parser* parser;
 };

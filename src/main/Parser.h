@@ -11,7 +11,7 @@ public:
     ParseTree* parse(std::string& command);
 private:
     Window* window;
-    CmdList* cmd_list;
+    CommandList* cmd_list;
 };
 
 #endif
