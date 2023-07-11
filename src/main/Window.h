@@ -23,7 +23,7 @@ public:
     Window();
     Settings* get_settings();
     TextView* get_text_view();
-    CommandList* get_cmd_list();
+    CommandList* get_command_list();
     Shell* get_shell();
     Parser* get_parser();
 private:
@@ -31,7 +31,7 @@ private:
     Gtk::ScrolledWindow scrolled_window;
     Settings* settings;
     TextView* text_view;
-    CommandList* cmd_list;
+    CommandList* command_list;
     Shell* shell;
     Parser* parser;
 };

@@ -8,7 +8,7 @@ Window::Window() : vbox(Gtk::Orientation::VERTICAL)
 
     settings = new Settings;
     text_view = new TextView(this);
-    cmd_list = new CommandList;
+    command_list = new CommandList;
     shell = new Shell(this);
     parser = new Parser(this);
 
@@ -28,9 +28,9 @@ TextView* Window::get_text_view()
     return text_view;
 }
 
-CommandList* Window::get_cmd_list()
+CommandList* Window::get_command_list()
 {
-    return cmd_list;
+    return command_list;
 }
 
 Shell* Window::get_shell()

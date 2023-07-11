@@ -11,7 +11,7 @@
 Parser::Parser(Window* window)
 {
     this->window = window;
-    this->cmd_list = window->get_cmd_list();
+    this->command_list = window->get_command_list();
 }
 
 ParseTree* Parser::parse(std::string& cmd)
@@ -34,14 +34,14 @@ ParseTree* Parser::parse(std::string& cmd)
         parse_tree->cmd = new SystemProgram(cmd, window);
         parse_tree->status_code = StatusCode::OK;
     }
-    else if (!cmd_list->contains(args[0]))
+    else if (!command_list->contains(args[0]))
     {
         parse_tree->status_code = StatusCode::COMMAND_NOT_FOUND;
     }
     else
     {
-        CommandType cmd_type = (*cmd_list)[args[0]];
-        switch (cmd_type)
+        CommandType command_type = (*command_list)[args[0]];
+        switch (command_type)
         {
             case CommandType::CLEAR:
                 parse_tree->cmd = new Clear(cmd, window);
