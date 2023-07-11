@@ -2,13 +2,13 @@
 #define PARSER_H
 
 #include "Window.h"
-#include "ParseTree.h"
 
 class Parser
 {
 public:
     Parser(Window* window);
     ParseTree* parse(std::string& command);
+    CommandList* get_command_list();
 private:
     Window* window;
     CommandList* command_list;

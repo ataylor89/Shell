@@ -1,7 +1,7 @@
 #ifndef CAT_H
 #define CAT_H
 
-#include "Command.h"
+#include "Window.h"
 
 class Cat : public Command
 {

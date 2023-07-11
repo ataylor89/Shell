@@ -1,5 +1,4 @@
 #include "Hexdump.h"
-#include "StringUtils.h"
 #include <cstdio>
 #include <cstdlib>
 

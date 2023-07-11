@@ -2,7 +2,6 @@
 #define COMMAND_H
 
 #include "Window.h"
-#include <string>
 
 class Command
 {

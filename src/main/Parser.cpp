@@ -1,17 +1,15 @@
 #include "Parser.h"
-#include "Command.h"
 #include "Clear.h"
 #include "SetPrefix.h"
 #include "Cat.h"
 #include "Hexdump.h"
 #include "Exit.h"
 #include "SystemProgram.h"
-#include "StringUtils.h"
 
 Parser::Parser(Window* window)
 {
     this->window = window;
-    this->command_list = window->get_command_list();
+    this->command_list = new CommandList;
 }
 
 ParseTree* Parser::parse(std::string& cmd)

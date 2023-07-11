@@ -1,7 +1,7 @@
 #ifndef HEXDUMP_H
 #define HEXDUMP_H
 
-#include "Command.h"
+#include "Window.h"
 
 class Hexdump : public Command
 {

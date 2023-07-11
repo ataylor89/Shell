@@ -1,7 +1,7 @@
 #ifndef SET_PREFIX_H
 #define SET_PREFIX_H
 
-#include "Command.h"
+#include "Window.h"
 
 class SetPrefix : public Command
 {

@@ -18,7 +18,7 @@
  * This will split the string a maximum of 9 times, and output an array that has a maximum size of 10.
  */
 
-#include "StringUtils.h"
+#include "Util.h"
 #include <iostream>
 
 void run_test(string& str, const string& delimiters)

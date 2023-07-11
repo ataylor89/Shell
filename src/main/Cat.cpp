@@ -1,5 +1,4 @@
 #include "Cat.h"
-#include "StringUtils.h"
 #include <cstdio>
 #include <cstdlib>
 

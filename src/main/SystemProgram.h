@@ -2,7 +2,6 @@
 #define SYSTEM_PROGRAM_H
 
 #include "Window.h"
-#include <string>
 
 class SystemProgram : public Command
 {

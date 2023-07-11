@@ -4,15 +4,14 @@ Shell::Shell(Window* window)
 {
     this->window = window;
     this->text_view = window->get_text_view();
+    this->parser = new Parser(window);
 }
 
 void Shell::exec(std::string command)
 {
-    Parser* parser;
     ParseTree* parse_tree;
     Command* cmd;
 
-    parser = window->get_parser();
     parse_tree = parser->parse(command);
 
     switch (parse_tree->status_code)
