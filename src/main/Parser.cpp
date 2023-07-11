@@ -8,48 +8,59 @@
 #include "SystemProgram.h"
 #include "StringUtils.h"
 
-Parser::Parser(Window* window) 
+Parser::Parser(Window* window)
 {
     this->window = window;
+    this->cmd_list = window->get_cmd_list();
 }
 
-Command* Parser::parse(std::string cmd)
+ParseTree* Parser::parse(std::string& cmd)
 {
-    trim(cmd);
+    ParseTree* parse_tree;
+    std::vector<std::string> args;
 
-    std::vector<std::string> args = split(cmd, " ");
+    parse_tree = new ParseTree;
+
+    trim(cmd);
+    args = split(cmd, " ");
 
     if (args.empty())
     {
-        return NULL;
+        parse_tree->status_code = StatusCode::BLANK_LINE;
     }
-    else if (args[0] == "clear")
-    {
-        return new Clear(cmd, window);
-    }
-    else if (args[0] == "setprefix")
-    {
-        return new SetPrefix(cmd, window);
-    }
-    else if (args[0] == "cat")
-    {
-        return new Cat(cmd, window);
-    }
-    else if (args[0] == "hexdump")
-    {
-        return new Hexdump(cmd, window);
-    }
-    else if (args[0] == "exit")
-    {
-        return new Exit(cmd, window);
-    }
-    else if (args[0][0] == '*' && args[0].length() > 1)
+    else if (args[0].length() > 1 && args[0][0] == '*')
     {
         cmd.erase(0, 1);
-        return new SystemProgram(cmd, window);
+        parse_tree->cmd = new SystemProgram(cmd, window);
+        parse_tree->status_code = StatusCode::OK;
+    }
+    else if (!cmd_list->contains(args[0]))
+    {
+        parse_tree->status_code = StatusCode::COMMAND_NOT_FOUND;
     }
     else
     {
-        return NULL;
+        CommandType cmd_type = (*cmd_list)[args[0]];
+        switch (cmd_type)
+        {
+            case CommandType::CLEAR:
+                parse_tree->cmd = new Clear(cmd, window);
+                break;
+            case CommandType::SETPREFIX:
+                parse_tree->cmd = new SetPrefix(cmd, window);
+                break;
+            case CommandType::EXIT:
+                parse_tree->cmd = new Exit(cmd, window);
+                break;
+            case CommandType::CAT:
+                parse_tree->cmd = new Cat(cmd, window);
+                break;
+            case CommandType::HEXDUMP:
+                parse_tree->cmd = new Hexdump(cmd, window);
+                break;
+        }
+        parse_tree->status_code = StatusCode::OK;
     }
+
+    return parse_tree;
 }

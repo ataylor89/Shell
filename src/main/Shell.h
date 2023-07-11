@@ -10,6 +10,7 @@ public:
     void exec(std::string command);
 private:
     Window* window;
+    TextView* text_view;
 };
 
 #endif
