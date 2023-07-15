@@ -1,4 +1,3 @@
-#include "Util.h"
 #include <sys/types.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -9,7 +8,6 @@
 
 int main(int argc, char** argv)
 {
-    HEXDUMP *dump;
     char buffer[128];
     pid_t pid;
     size_t n;
@@ -30,8 +28,7 @@ int main(int argc, char** argv)
     memset(buffer, 0, 128);
     n = read(fds[0], buffer, 128);
 
-    dump = hexdump(buffer, n);
-    fwrite(dump->buffer, 1, dump->size, stdout);
+    fwrite(buffer, 1, strlen(buffer), stdout);
 
     return 0;
 }

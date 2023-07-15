@@ -20,6 +20,5 @@ tests:
 	if [ ! -d tests ]; then mkdir tests; fi;
 	g++ src/test/Split.cpp src/main/Util.cpp -I src/main -o tests/Split
 	g++ src/test/Trim.cpp src/main/Util.cpp -I src/main -o tests/Trim
-	g++ src/test/Hexdump.cpp src/main/Util.cpp -I src/main -o tests/Hexdump
 	g++ src/test/Echo.cpp src/main/Util.cpp -I src/main -o tests/Echo
 	g++ src/test/Tee.cpp src/main/Util.cpp -I src/main -o tests/Tee

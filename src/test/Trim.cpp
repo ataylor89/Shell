@@ -1,5 +1,6 @@
 #include "Util.h"
 #include <iostream>
+using namespace std;
 
 int main(int argc, char** argv)
 {
@@ -12,14 +13,10 @@ int main(int argc, char** argv)
     std::string input(argv[1]);
 
     cout << "User input: " << input << endl;
-    print_hexdump(input);
-    cout << endl;
 
     trim(input);
 
     cout << "After trim: " << input << endl;
-    print_hexdump(input);
-    cout << endl;
     
     return 0;
 }

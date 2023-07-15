@@ -1,4 +1,3 @@
-#include "Util.h"
 #include <sys/types.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -42,8 +41,7 @@ int main(int argc, char** argv)
         write(pipe1[1], keyboard_input, strlen(keyboard_input));
         read(pipe2[0], program_output, 128);
         
-        print_hexdump(program_output, strlen(program_output));
-        printf("\n");
+        fwrite(program_output, 1, strlen(program_output), stdout);
     }
     
     return 0;

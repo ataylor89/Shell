@@ -10,9 +10,22 @@ Hexdump::Hexdump(std::string& user_input, Window* window) : Command(user_input, 
     text_view = window->get_text_view();
 }
 
+void Hexdump::exec()
+{
+    std::vector<std::string> args;
+
+    args = split(user_input, " ");
+    text_view->append("\n");
+
+    if (args.size() == 2)
+    {
+        exec(args[1].c_str());
+    }
+}
+
 void Hexdump::exec(const char* filename)
 {
-    HEXDUMP* dump;
+    Hexstring* dump;
     FILE* file;
     int offset, filesize, n;
     char *buffer;
@@ -53,33 +66,79 @@ void Hexdump::exec(const char* filename)
         }
     }
 
-    fclose(file);
-    free(dump);
-    free(buffer);
-}
+    auto tv_buffer = text_view->get_buffer();
+    auto tv_cursor = tv_buffer->get_insert();
+    auto tv_iter = tv_buffer->get_iter_at_mark(tv_cursor);
 
-void Hexdump::exec()
-{
-    std::vector<std::string> args;
+    tv_iter.backward_char();
 
-    args = split(user_input, " ");
-    text_view->append("\n");
-
-    if (args.size() == 2)
-    {
-        exec(args[1].c_str());
-    }
-
-    auto buffer = text_view->get_buffer();
-    auto cursor = buffer->get_insert();
-    auto iter = buffer->get_iter_at_mark(cursor);
-
-    iter.backward_char();
-
-    if (iter.get_char() != '\n')
+    if (tv_iter.get_char() != '\n')
     {
         text_view->append("\n");
     }
 
     text_view->append_prefix();
+
+    fclose(file);
+    free(dump);
+    free(buffer);
+}
+
+Hexstring* Hexdump::hexdump(char* str, int size, int line_pos)
+{
+    Hexstring *dump;
+    char *ptr;
+    int i, j, num_spaces;
+
+    dump = (Hexstring *) malloc(sizeof(Hexstring));
+    dump->buffer = (char *) malloc(sizeof(char) * size * 10);
+    ptr = dump->buffer;
+
+    for (i = 0; i < size;)
+    {
+        sprintf(ptr, "%08x: ", line_pos);
+
+        ptr += 10;
+
+        for (j = 0; j < 16; j++)
+        {
+            if (i + j > size - 1)
+            {
+                num_spaces = (j % 2 == 1) ? 3 : 2;
+                sprintf(ptr, "%*c", num_spaces, ' ');
+                ptr += num_spaces;
+            }
+            else if (j % 2 == 1)
+            {
+                sprintf(ptr, "%02hhx ", str[i + j]);
+                ptr += 3;
+            }
+            else
+            {
+                sprintf(ptr, "%02hhx", str[i + j]);
+                ptr += 2;
+            }
+        }
+
+        for (j = 0; j < 16 && i + j < size; j++)
+        {
+            char ch = isprint(str[i + j]) ? str[i + j] : '.';
+            if (j == 15 && i + j < size - 1)
+            {
+                sprintf(ptr, "%c\n", ch);
+                ptr += 2;
+            }
+            else
+            {
+                sprintf(ptr, "%c", ch);
+                ptr++;
+            }
+        }
+
+        i += j;
+        line_pos += 16;
+    }
+
+    dump->size = ptr - dump->buffer;
+    return dump;
 }
