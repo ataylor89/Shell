@@ -6,7 +6,7 @@
 class SystemProgram : public Command
 {
 public:
-    SystemProgram(std::string& cmd, Window* window);
+    SystemProgram(std::string& user_input, Window* window);
     void exec();
 };
 

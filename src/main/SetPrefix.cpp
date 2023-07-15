@@ -1,6 +1,7 @@
 #include "SetPrefix.h"
+#include "Util.h"
 
-SetPrefix::SetPrefix(std::string& cmd, Window* window) : Command(cmd, window) {}
+SetPrefix::SetPrefix(std::string& user_input, Window* window) : Command(user_input, window) {}
 
 void SetPrefix::exec()
 {
@@ -8,7 +9,7 @@ void SetPrefix::exec()
     Settings* settings;
     TextView* text_view;
 
-    args = split(cmd, " ", 2);
+    args = split(user_input, " ", 2);
 
     if (args.size() == 2)
     {

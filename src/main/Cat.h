@@ -6,7 +6,7 @@
 class Cat : public Command
 {
 public:
-    Cat(std::string& cmd, Window* window);
+    Cat(std::string& user_input, Window* window);
     void exec();
 private:
     void exec(const char* filename);

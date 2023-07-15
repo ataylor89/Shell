@@ -1,8 +1,9 @@
 #include "TextView.h"
 
-TextView::TextView(Window* window)
+TextView::TextView(Settings* settings, Parser* parser)
 {
-    this->window = window;
+    this->settings = settings;
+    this->parser = parser;
 
     set_editable(true);
     set_wrap_mode(Gtk::WrapMode::WORD_CHAR);
@@ -13,7 +14,6 @@ TextView::TextView(Window* window)
     set_name("TextView");
 
     auto buffer = Gtk::TextBuffer::create();
-    Settings* settings = window->get_settings();
     std::string prefix = settings->get_prefix();
     buffer->set_text(prefix);
     set_buffer(buffer);
@@ -33,7 +33,6 @@ TextView::TextView(Window* window)
 void TextView::clear()
 {
     auto buffer = get_buffer();
-    Settings* settings = window->get_settings();
     std::string prefix = settings->get_prefix();
     buffer->set_text(prefix);
 }
@@ -59,7 +58,6 @@ void TextView::append(char* text, int length)
 void TextView::append_prefix()
 {
     auto buffer = get_buffer();
-    Settings* settings = window->get_settings();
     std::string prefix = settings->get_prefix();
     buffer->insert_at_cursor(prefix);
 
@@ -71,7 +69,6 @@ bool TextView::on_key_pressed(guint keyval, guint keycode, Gdk::ModifierType sta
 {
     if (keyval == GDK_KEY_Return)
     {
-        Settings* settings = window->get_settings();
         const std::string prefix = settings->get_prefix();
         const int len = prefix.length();
 
@@ -86,15 +83,16 @@ bool TextView::on_key_pressed(guint keyval, guint keycode, Gdk::ModifierType sta
         }
 
         start.forward_chars(start == buffer->begin() ? len : len + 1);
-        std::string command = buffer->get_text(start, end);
 
-        Shell* shell = window->get_shell();
-        shell->exec(command);
+        std::string user_input = buffer->get_text(start, end);
+
+        Command* cmd = parser->parse(user_input);
+        cmd->exec();
+
         return true;
     }
     else if (keyval == GDK_KEY_BackSpace)
     {
-        Settings* settings = window->get_settings();
         const std::string prefix = settings->get_prefix();
         const int len = prefix.length();
 

@@ -7,8 +7,8 @@ Window::Window() : vbox(Gtk::Orientation::VERTICAL)
     set_child(vbox);
 
     settings = new Settings;
-    text_view = new TextView(this);
-    shell = new Shell(this);
+    parser = new Parser(this);
+    text_view = new TextView(settings, parser);
 
     scrolled_window.set_policy(Gtk::PolicyType::NEVER, Gtk::PolicyType::AUTOMATIC);
     scrolled_window.set_expand();
@@ -21,12 +21,12 @@ Settings* Window::get_settings()
     return settings;
 }
 
+Parser* Window::get_parser()
+{
+    return parser;
+}
+
 TextView* Window::get_text_view()
 {
     return text_view;
-}
-
-Shell* Window::get_shell()
-{
-    return shell;
 }

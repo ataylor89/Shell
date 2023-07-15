@@ -1,6 +1,6 @@
 #include "Exit.h"
 
-Exit::Exit(std::string& cmd, Window* window) : Command(cmd, window) {}
+Exit::Exit(std::string& user_input, Window* window) : Command(user_input, window) {}
 
 void Exit::exec()
 {

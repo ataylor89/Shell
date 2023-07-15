@@ -6,7 +6,7 @@
 class Clear : public Command
 {
 public:
-    Clear(std::string& cmd, Window* window);
+    Clear(std::string& user_input, Window* window);
     void exec();
 };
 

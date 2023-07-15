@@ -1,7 +1,7 @@
 #include "SystemProgram.h"
 #include <cstdlib>
 
-SystemProgram::SystemProgram(std::string& cmd, Window* window) : Command(cmd, window) {}
+SystemProgram::SystemProgram(std::string& user_input, Window* window) : Command(user_input, window) {}
 
 void SystemProgram::exec()
 {
@@ -10,9 +10,9 @@ void SystemProgram::exec()
     std::string output;
     TextView* text_view;
 
-    cmd += " 2>&1";
+    user_input += " 2>&1";
 
-    if ((stream = popen(cmd.c_str(), "r")) == NULL)
+    if ((stream = popen(user_input.c_str(), "r")) == NULL)
     {
         return;
     }

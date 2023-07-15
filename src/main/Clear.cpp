@@ -1,6 +1,6 @@
 #include "Clear.h"
 
-Clear::Clear(std::string& cmd, Window* window) : Command(cmd, window) {}
+Clear::Clear(std::string& user_input, Window* window) : Command(user_input, window) {}
 
 void Clear::exec()
 {

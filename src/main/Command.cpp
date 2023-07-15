@@ -1,8 +1,8 @@
 #include "Command.h"
 
-Command::Command(std::string& cmd, Window* window)
+Command::Command(std::string& user_input, Window* window)
 {
-    this->cmd = cmd;
+    this->user_input = user_input;
     this->window = window;
 }
 

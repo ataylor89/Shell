@@ -6,7 +6,7 @@
 class Hexdump : public Command
 {
 public:
-    Hexdump(std::string& cmd, Window* window);
+    Hexdump(std::string& user_input, Window* window);
     void exec();
 private:
     void exec(const char* filename);

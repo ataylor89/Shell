@@ -1,10 +1,11 @@
 #include "Cat.h"
+#include "Util.h"
 #include <cstdio>
 #include <cstdlib>
 
 #define PARTITION_LENGTH 4096
 
-Cat::Cat(std::string& cmd, Window* window) : Command(cmd, window)
+Cat::Cat(std::string& user_input, Window* window) : Command(user_input, window)
 {
     text_view = window->get_text_view();
 }
@@ -52,7 +53,7 @@ void Cat::exec()
 {
     std::vector<std::string> args;
 
-    args = split(cmd, " ");
+    args = split(user_input, " ");
     text_view->append("\n");
 
     if (args.size() == 2)

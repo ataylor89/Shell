@@ -1,10 +1,11 @@
 #include "Hexdump.h"
+#include "Util.h"
 #include <cstdio>
 #include <cstdlib>
 
 #define PARTITION_LENGTH 512
 
-Hexdump::Hexdump(std::string& cmd, Window* window) : Command(cmd, window)
+Hexdump::Hexdump(std::string& user_input, Window* window) : Command(user_input, window)
 {
     text_view = window->get_text_view();
 }
@@ -61,7 +62,7 @@ void Hexdump::exec()
 {
     std::vector<std::string> args;
 
-    args = split(cmd, " ");
+    args = split(user_input, " ");
     text_view->append("\n");
 
     if (args.size() == 2)
