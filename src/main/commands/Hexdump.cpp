@@ -21,6 +21,18 @@ void Hexdump::exec()
     {
         exec(args[1].c_str());
     }
+
+    auto buffer = text_view->get_buffer();
+    auto cursor = buffer->get_insert();
+    auto iter = buffer->get_iter_at_mark(cursor);
+    iter.backward_char();
+
+    if (iter.get_char() != '\n')
+    {
+        text_view->append("\n");
+    }
+
+    text_view->append_prefix();
 }
 
 void Hexdump::exec(const char* filename)
@@ -65,19 +77,6 @@ void Hexdump::exec(const char* filename)
             text_view->append("\n*\n");
         }
     }
-
-    auto tv_buffer = text_view->get_buffer();
-    auto tv_cursor = tv_buffer->get_insert();
-    auto tv_iter = tv_buffer->get_iter_at_mark(tv_cursor);
-
-    tv_iter.backward_char();
-
-    if (tv_iter.get_char() != '\n')
-    {
-        text_view->append("\n");
-    }
-
-    text_view->append_prefix();
 
     fclose(file);
     free(dump);
