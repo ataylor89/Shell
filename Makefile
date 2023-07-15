@@ -4,7 +4,17 @@ clean:
 
 install:
 	if [ ! -d bin ]; then mkdir bin; fi;
-	g++ src/main/*.cpp -o bin/Terminal `pkg-config --cflags --libs gtkmm-4.0` --std=c++20
+	g++ src/main/*.cpp \
+		src/main/gui/*.cpp \
+		src/main/parser/*.cpp \
+		src/main/commands/*.cpp \
+		-I src/main \
+		-I src/main/gui \
+		-I src/main/parser \
+		-I src/main/commands \
+		-o bin/Terminal \
+		`pkg-config --cflags --libs gtkmm-4.0` \
+		--std=c++20
 
 tests:
 	if [ ! -d tests ]; then mkdir tests; fi;
