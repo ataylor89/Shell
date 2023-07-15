@@ -3,12 +3,6 @@
 
 #include "Window.h"
 
-struct Hexstring
-{
-    char *buffer;
-    int size;
-};
-
 class Hexdump : public Command
 {
 public:
@@ -16,7 +10,7 @@ public:
     void exec();
 private:
     void exec(const char* filename);
-    Hexstring* hexdump(char* str, int size, int line_pos);
+    std::string hexdump(char* str, int size, int line_pos);
     TextView* text_view;
 };
 

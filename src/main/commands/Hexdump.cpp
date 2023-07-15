@@ -37,7 +37,7 @@ void Hexdump::exec()
 
 void Hexdump::exec(const char* filename)
 {
-    Hexstring* dump;
+    std::string dump;
     FILE* file;
     int offset, filesize, n;
     char *buffer;
@@ -68,7 +68,7 @@ void Hexdump::exec(const char* filename)
 
         dump = hexdump(buffer, n, offset);
 
-        text_view->append(dump->buffer, dump->size);
+        text_view->append(dump);
 
         offset += n;
 
@@ -79,19 +79,16 @@ void Hexdump::exec(const char* filename)
     }
 
     fclose(file);
-    free(dump);
     free(buffer);
 }
 
-Hexstring* Hexdump::hexdump(char* str, int size, int line_pos)
+string Hexdump::hexdump(char* str, int size, int line_pos)
 {
-    Hexstring *dump;
-    char *ptr;
+    char *buffer, *ptr;
     int i, j, num_spaces;
 
-    dump = (Hexstring *) malloc(sizeof(Hexstring));
-    dump->buffer = (char *) malloc(sizeof(char) * size * 10);
-    ptr = dump->buffer;
+    buffer = (char *) malloc(sizeof(char) * size * 10);
+    ptr = buffer;
 
     for (i = 0; i < size;)
     {
@@ -138,6 +135,9 @@ Hexstring* Hexdump::hexdump(char* str, int size, int line_pos)
         line_pos += 16;
     }
 
-    dump->size = ptr - dump->buffer;
-    return dump;
+    std::string result(buffer);
+
+    free(buffer);
+
+    return result;
 }
