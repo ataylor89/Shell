@@ -3,13 +3,13 @@ clean:
 	if [ -d tests ]; then rm tests/*; rmdir tests; fi;
 
 shell_software: clean
-	if [ ! -d bin ]; then mkdir bin; fi;
+	mkdir bin
 	gcc src/main/c/ls.c -o bin/ls
 	gcc src/main/c/cat.c -o bin/cat
 	gcc src/main/c/hexdump.c -o bin/hexdump
 
 tests: shell_software
-	if [ ! -d tests ]; then mkdir tests; fi;
+	mkdir tests
 	g++ src/test/Split.cpp src/main/Util.cpp -I src/main -o tests/Split
 	g++ src/test/Trim.cpp src/main/Util.cpp -I src/main -o tests/Trim
 	g++ src/test/Ls.cpp -o tests/Ls
