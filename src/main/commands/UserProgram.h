@@ -11,6 +11,7 @@ public:
 private:
     void exec(const char* path, char** argv);
     TextView* text_view;
+    Settings* settings;
 };
 
 #endif

@@ -1,4 +1,5 @@
 #include "Window.h"
+#include <filesystem>
 
 Window::Window() : vbox(Gtk::Orientation::VERTICAL)
 {
@@ -6,7 +7,7 @@ Window::Window() : vbox(Gtk::Orientation::VERTICAL)
     set_default_size(1200, 750);
     set_child(vbox);
 
-    settings = new Settings;
+    settings = new Settings("% ", std::filesystem::current_path().string() + "/bin");
     parser = new Parser(this);
     text_view = new TextView(settings, parser);
 

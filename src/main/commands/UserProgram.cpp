@@ -10,6 +10,7 @@ UserProgram::UserProgram(std::string& user_input, Window* window)
 : Command(user_input, window)
 {
     text_view = window->get_text_view();
+    settings = window->get_settings();
 }
 
 void UserProgram::exec()
@@ -19,7 +20,7 @@ void UserProgram::exec()
     int count;
 
     args = split(user_input, " ");
-    path = "bin/" + args[0];
+    path = settings->get_program_directory() + "/" + args[0];
     count = args.size();
 
     char* argv[count + 1];
