@@ -10,15 +10,9 @@ This project depends on the gtkmm4 library. I was able to install this dependenc
 
 I wrote a Makefile to automate the build process. After installing the gtkmm4 dependency, the project can be built with the command
 
-    make install
+    make terminal
 
 This tells g++ to compile all of the source files, and link the object files into a binary named "Terminal".
-
-As an alternative, the project can be built with the command
-
-    make clean install
-
-This runs the "clean" rule before running the "install" rule.
 
 It is also possible to compile the source files with the clang++ compiler, by editing the Makefile and substituting clang++ for g++. I have tested the build process with both the g++ and clang++ compilers.
 
