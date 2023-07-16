@@ -8,6 +8,8 @@ class SystemProgram : public Command
 public:
     SystemProgram(std::string& user_input, Window* window);
     void exec();
+private:
+    TextView* text_view;
 };
 
 #endif

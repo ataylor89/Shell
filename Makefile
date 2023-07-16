@@ -1,16 +1,20 @@
 clean:
 	if [ -d bin ]; then rm bin/*; rmdir bin; fi;
-	if [ -d tests ]; then rm tests/*; rmdir tests; fi
+	if [ -d tests ]; then rm tests/*; rmdir tests; fi;
 
-tests:
+shell_software: clean
+	if [ ! -d bin ]; then mkdir bin; fi;
+	gcc src/main/c/ls.c -o bin/ls
+	gcc src/main/c/cat.c -o bin/cat
+	gcc src/main/c/hexdump.c -o bin/hexdump
+
+tests: shell_software
 	if [ ! -d tests ]; then mkdir tests; fi;
 	g++ src/test/Split.cpp src/main/Util.cpp -I src/main -o tests/Split
 	g++ src/test/Trim.cpp src/main/Util.cpp -I src/main -o tests/Trim
-	g++ src/test/Echo.cpp src/main/Util.cpp -I src/main -o tests/Echo
-	g++ src/test/Tee.cpp src/main/Util.cpp -I src/main -o tests/Tee
+	g++ src/test/Ls.cpp -o tests/Ls
 
-install:
-	if [ ! -d bin ]; then mkdir bin; fi;
+terminal: shell_software
 	g++ src/main/*.cpp \
 		src/main/gui/*.cpp \
 		src/main/parser/*.cpp \

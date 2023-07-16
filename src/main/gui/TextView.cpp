@@ -49,7 +49,7 @@ void TextView::append(std::string text)
 void TextView::append(char* text, int length)
 {
     auto buffer = get_buffer();
-    buffer->insert_at_cursor(text, text + length - 1);
+    buffer->insert_at_cursor(text, text + length);
 
     auto cursor = buffer->get_insert();
     scroll_to(cursor, 0.01);

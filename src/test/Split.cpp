@@ -21,35 +21,29 @@
 #include "Util.h"
 #include <iostream>
 
-void run_test(string& str, const string& delimiters)
+void run_test(string& str, string& delimiters)
 {
-    cout << "==================================================================" << endl;
-    cout << "User inputs:" << endl;
-    cout << "==================================================================" << endl;
     cout << "String: " << "\"" + str + "\"" << endl;
     cout << "Delimiters: " << "\"" + delimiters + "\"" << endl;
-    cout << "==================================================================" << endl;
-    cout << "Testing the split(str, delimiters) function..." << endl;
-    cout << "==================================================================" << endl;
+    cout << "Result:" << endl;
+
     vector<string> buffer = split(str, delimiters);
+
     for (int i = 0; i < buffer.size(); i++)
     {
         cout << i << ": " << buffer[i] << endl;
     }
 }
 
-void run_test(string& str, const string& delimiters, int limit)
+void run_test(string& str, string& delimiters, int limit)
 {
-    cout << "==================================================================" << endl;
-    cout << "User inputs:" << endl;
-    cout << "==================================================================" << endl;
     cout << "String: " << "\"" + str + "\"" << endl;
     cout << "Delimiters: " << "\"" + delimiters + "\"" << endl;
     cout << "Limit: " << limit << endl;
-    cout << "==================================================================" << endl;
-    cout << "Testing the split(str, delimiters, limit) function..." << endl;
-    cout << "==================================================================" << endl;
+    cout << "Result:" << endl;
+
     vector<string> buffer = split(str, delimiters, limit);
+
     for (int i = 0; i < buffer.size(); i++)
     {
         cout << i << ": " << buffer[i] << endl;
@@ -65,7 +59,7 @@ int main(int argc, char **argv)
     }
 
     string str = string(argv[1]);
-    const string delimiters = string(argv[2]);
+    string delimiters = string(argv[2]);
 
     if (argc == 3)
     {

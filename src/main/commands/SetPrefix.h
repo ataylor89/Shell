@@ -8,6 +8,9 @@ class SetPrefix : public Command
 public:
     SetPrefix(std::string& user_input, Window* window);
     void exec();
+private:
+    Settings* settings;
+    TextView* text_view;
 };
 
 #endif

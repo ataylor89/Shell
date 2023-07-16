@@ -1,13 +1,13 @@
 #include "NullCommand.h"
 
-NullCommand::NullCommand(std::string& str, Window* window) 
-: Command(str, window)
+NullCommand::NullCommand(std::string& user_input, Window* window)
+: Command(user_input, window)
 {
     this->text_view = window->get_text_view();
 }
 
-NullCommand::NullCommand(std::string& str, Window* window, std::string error_message)
-: Command(str, window)
+NullCommand::NullCommand(std::string& user_input, Window* window, std::string error_message)
+: Command(user_input, window)
 {
     this->text_view = window->get_text_view();
     this->error_message = error_message;

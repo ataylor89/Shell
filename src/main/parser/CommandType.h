@@ -4,10 +4,11 @@
 enum class CommandType
 {
     CLEAR,
-    SETPREFIX,
     EXIT,
-    CAT,
-    HEXDUMP
+    NULL_COMMAND,
+    SETPREFIX,
+    SYSTEM_PROGRAM,
+    USER_PROGRAM
 };
 
 #endif

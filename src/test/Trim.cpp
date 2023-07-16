@@ -16,7 +16,7 @@ int main(int argc, char** argv)
 
     trim(input);
 
-    cout << "After trim: " << input << endl;
+    cout << "Program output: " << input << endl;
     
     return 0;
 }
