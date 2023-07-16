@@ -240,8 +240,9 @@ int main(int argc, char** argv)
 {
     DirectoryListing* dl;
     char* filename;
+    int exit_code;
 
-    int exit_code = 0;
+    exit_code = 0;
 
     switch (argc)
     {
