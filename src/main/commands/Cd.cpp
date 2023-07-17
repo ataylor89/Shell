@@ -12,27 +12,25 @@ void Cd::exec()
     std::vector<std::string> args;
     args = split(user_input, " ", 2);
 
-    if (args.size() != 2)
+    if (args.size() == 2)
     {
-        return;
-    }
-
-    else if (std::filesystem::is_directory(args[1]))
-    {
-        if (args[1][0] == '/')
+        if (std::filesystem::is_directory(args[1]))
         {
-            std::filesystem::current_path(args[1]);
+            if (args[1][0] == '/')
+            {
+                std::filesystem::current_path(args[1]);
+            }
+
+            else
+            {
+                std::filesystem::current_path(std::filesystem::current_path() /= args[1]);
+            }
         }
 
         else
         {
-            std::filesystem::current_path(std::filesystem::current_path() /= args[1]);
+            text_view->append("\nTerminal: The given path is not a directory.");
         }
-    }
-
-    else
-    {
-        text_view->append("\nTerminal: The given path is not a directory.");
     }
 
     text_view->append("\n");
