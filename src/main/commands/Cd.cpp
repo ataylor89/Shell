@@ -10,34 +10,23 @@ Cd::Cd(std::string& user_input, Window* window) : Command(user_input, window)
 void Cd::exec()
 {
     std::vector<std::string> args;
-    std::filesystem::path path;
-
     args = split(user_input, " ", 2);
 
-    if (args.size() == 2)
+    if (args.size() != 2)
     {
-        exec(args[1]);
+        return;
     }
 
-    text_view->append("\n");
-    text_view->append_prefix();
-}
-
-void Cd::exec(std::string path)
-{
-    std::filesystem::path current_directory;
-    current_directory = std::filesystem::current_path();
-
-    if (std::filesystem::is_directory(path))
+    else if (std::filesystem::is_directory(args[1]))
     {
-        if (path[0] == '/')
+        if (args[1][0] == '/')
         {
-            std::filesystem::current_path(path);
+            std::filesystem::current_path(args[1]);
         }
 
         else
         {
-            std::filesystem::current_path(current_directory /= path);
+            std::filesystem::current_path(std::filesystem::current_path() /= args[1]);
         }
     }
 
@@ -45,4 +34,7 @@ void Cd::exec(std::string path)
     {
         text_view->append("\nTerminal: The given path is not a directory.");
     }
+
+    text_view->append("\n");
+    text_view->append_prefix();
 }

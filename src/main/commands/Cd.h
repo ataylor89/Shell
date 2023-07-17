@@ -9,7 +9,6 @@ public:
     Cd(std::string& user_input, Window* window);
     void exec();
 private:
-    void exec(std::string path);
     TextView* text_view;
 };
 
