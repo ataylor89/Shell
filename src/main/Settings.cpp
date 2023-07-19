@@ -12,7 +12,6 @@ Settings::Settings()
 
 void Settings::load()
 {
-
     struct passwd* pw;
     struct group* gr;
 
