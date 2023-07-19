@@ -1,7 +1,7 @@
 #ifndef USER_PROGRAM_H
 #define USER_PROGRAM_H
 
-#include "Window.h"
+#include "gui/Window.h"
 
 class UserProgram : public Command
 {

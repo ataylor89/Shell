@@ -1,7 +1,7 @@
 #ifndef PWD_H
 #define PWD_H
 
-#include "Window.h"
+#include "gui/Window.h"
 
 class Pwd : public Command
 {

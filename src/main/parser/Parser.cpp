@@ -1,13 +1,13 @@
-#include "Parser.h"
-#include "Cd.h"
-#include "Clear.h"
-#include "Exit.h"
-#include "NullCommand.h"
-#include "Pwd.h"
-#include "SetPrefix.h"
-#include "SystemProgram.h"
-#include "UserProgram.h"
 #include "Util.h"
+#include "parser/Parser.h"
+#include "commands/Cd.h"
+#include "commands/Clear.h"
+#include "commands/Exit.h"
+#include "commands/NullCommand.h"
+#include "commands/Pwd.h"
+#include "commands/SetPrefix.h"
+#include "commands/SystemProgram.h"
+#include "commands/UserProgram.h"
 
 Parser::Parser(Window* window)
 {

@@ -20,9 +20,6 @@ terminal: shell_software
 		src/main/parser/*.cpp \
 		src/main/commands/*.cpp \
 		-I src/main \
-		-I src/main/gui \
-		-I src/main/parser \
-		-I src/main/commands \
 		-o bin/Terminal \
 		`pkg-config --cflags --libs gtkmm-4.0` \
 		--std=c++20

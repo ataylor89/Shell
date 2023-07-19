@@ -6,10 +6,10 @@ class TextView;
 class Parser;
 class Command;
 
-#include <gtkmm.h>
 #include "Settings.h"
-#include "Parser.h"
-#include "TextView.h"
+#include "parser/Parser.h"
+#include "gui/TextView.h"
+#include <gtkmm.h>
 
 class Window : public Gtk::Window
 {

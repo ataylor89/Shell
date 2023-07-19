@@ -1,5 +1,5 @@
-#include "SetPrefix.h"
 #include "Util.h"
+#include "commands/SetPrefix.h"
 
 SetPrefix::SetPrefix(std::string& user_input, Window* window) : Command(user_input, window)
 {

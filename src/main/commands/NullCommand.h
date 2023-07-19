@@ -1,7 +1,7 @@
 #ifndef NULL_COMMAND_H
 #define NULL_COMMAND_H
 
-#include "Window.h"
+#include "gui/Window.h"
 
 class NullCommand : public Command
 {

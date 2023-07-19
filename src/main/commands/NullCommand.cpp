@@ -1,4 +1,4 @@
-#include "NullCommand.h"
+#include "commands/NullCommand.h"
 
 NullCommand::NullCommand(std::string& user_input, Window* window)
 : Command(user_input, window)

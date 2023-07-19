@@ -1,4 +1,4 @@
-#include "TextView.h"
+#include "gui/TextView.h"
 
 TextView::TextView(Settings* settings, Parser* parser)
 {

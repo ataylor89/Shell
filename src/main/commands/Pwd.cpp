@@ -1,5 +1,5 @@
-#include "Pwd.h"
 #include "Util.h"
+#include "commands/Pwd.h"
 #include <filesystem>
 
 Pwd::Pwd(std::string& user_input, Window* window) : Command(user_input, window)

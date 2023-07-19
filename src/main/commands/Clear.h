@@ -1,7 +1,7 @@
 #ifndef CLEAR_H
 #define CLEAR_H
 
-#include "Window.h"
+#include "gui/Window.h"
 
 class Clear : public Command
 {

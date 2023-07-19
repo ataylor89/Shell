@@ -1,4 +1,4 @@
-#include "Exit.h"
+#include "commands/Exit.h"
 
 Exit::Exit(std::string& user_input, Window* window) : Command(user_input, window) {}
 

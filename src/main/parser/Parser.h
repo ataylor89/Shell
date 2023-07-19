@@ -1,9 +1,9 @@
 #ifndef PARSER_H
 #define PARSER_H
 
-#include "Window.h"
-#include "Command.h"
-#include "CommandList.h"
+#include "gui/Window.h"
+#include "commands/Command.h"
+#include "parser/CommandList.h"
 
 class Parser
 {

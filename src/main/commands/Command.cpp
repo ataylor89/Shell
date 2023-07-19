@@ -1,4 +1,4 @@
-#include "Command.h"
+#include "commands/Command.h"
 
 Command::Command(std::string& user_input, Window* window)
 {

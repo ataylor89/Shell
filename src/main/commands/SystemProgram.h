@@ -1,7 +1,7 @@
 #ifndef SYSTEM_PROGRAM_H
 #define SYSTEM_PROGRAM_H
 
-#include "Window.h"
+#include "gui/Window.h"
 
 class SystemProgram : public Command
 {

@@ -1,7 +1,7 @@
 #ifndef COMMAND_LIST_H
 #define COMMAND_LIST_H
 
-#include "CommandType.h"
+#include "parser/CommandType.h"
 #include <map>
 #include <string>
 using namespace std;

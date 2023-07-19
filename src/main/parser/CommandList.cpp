@@ -1,4 +1,4 @@
-#include "CommandList.h"
+#include "parser/CommandList.h"
 
 CommandList::CommandList() : map<string, CommandType>()
 {

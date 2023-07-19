@@ -1,4 +1,4 @@
-#include "SystemProgram.h"
+#include "commands/SystemProgram.h"
 #include <cstdlib>
 
 SystemProgram::SystemProgram(std::string& user_input, Window* window)

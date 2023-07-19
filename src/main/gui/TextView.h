@@ -1,9 +1,9 @@
 #ifndef TEXT_VIEW_H
 #define TEXT_VIEW_H
 
-#include <gtkmm.h>
 #include "Settings.h"
-#include "Parser.h"
+#include "parser/Parser.h"
+#include <gtkmm.h>
 
 class TextView : public Gtk::TextView
 {

@@ -1,7 +1,7 @@
 #ifndef COMMAND_H
 #define COMMAND_H
 
-#include "Window.h"
+#include "gui/Window.h"
 
 class Command
 {

@@ -1,4 +1,4 @@
-#include "Clear.h"
+#include "commands/Clear.h"
 
 Clear::Clear(std::string& user_input, Window* window) : Command(user_input, window) {}
 
