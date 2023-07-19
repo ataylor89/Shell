@@ -10,7 +10,6 @@ UserProgram::UserProgram(std::string& user_input, Window* window)
 : Command(user_input, window)
 {
     text_view = window->get_text_view();
-    settings = window->get_settings();
 }
 
 void UserProgram::exec()
