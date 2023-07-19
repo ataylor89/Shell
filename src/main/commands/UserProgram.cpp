@@ -16,19 +16,19 @@ UserProgram::UserProgram(string& cmd, vector<string>& args, Window* window)
 void UserProgram::exec()
 {
     string path;
-    int count;
+    int argc;
 
     path = settings->get_program_directory() + "/" + args[0];
-    count = args.size();
+    argc = args.size();
 
-    char* argv[count + 1];
+    char* argv[argc + 1];
 
-    for (int i = 0; i < count; i++)
+    for (int i = 0; i < argc; i++)
     {
         argv[i] = strdup(args[i].c_str());
     }
 
-    argv[count] = NULL;
+    argv[argc] = NULL;
 
     text_view->append("\n");
 

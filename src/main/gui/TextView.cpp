@@ -14,7 +14,7 @@ TextView::TextView(Settings* settings, Parser* parser)
     set_name("TextView");
 
     auto buffer = Gtk::TextBuffer::create();
-    std::string prefix = settings->get_prefix();
+    string prefix = settings->get_prefix();
     buffer->set_text(prefix);
     set_buffer(buffer);
 
@@ -33,11 +33,11 @@ TextView::TextView(Settings* settings, Parser* parser)
 void TextView::clear()
 {
     auto buffer = get_buffer();
-    std::string prefix = settings->get_prefix();
+    string prefix = settings->get_prefix();
     buffer->set_text(prefix);
 }
 
-void TextView::append(std::string text)
+void TextView::append(string text)
 {
     auto buffer = get_buffer();
     buffer->insert_at_cursor(text);
@@ -58,7 +58,7 @@ void TextView::append(char* text, int length)
 void TextView::append_prefix()
 {
     auto buffer = get_buffer();
-    std::string prefix = settings->get_prefix();
+    string prefix = settings->get_prefix();
     buffer->insert_at_cursor(prefix);
 
     auto cursor = buffer->get_insert();
@@ -69,7 +69,7 @@ bool TextView::on_key_pressed(guint keyval, guint keycode, Gdk::ModifierType sta
 {
     if (keyval == GDK_KEY_Return)
     {
-        const std::string prefix = settings->get_prefix();
+        const string prefix = settings->get_prefix();
         const int len = prefix.length();
 
         auto buffer = get_buffer();
@@ -84,7 +84,7 @@ bool TextView::on_key_pressed(guint keyval, guint keycode, Gdk::ModifierType sta
 
         start.forward_chars(start == buffer->begin() ? len : len + 1);
 
-        std::string user_input = buffer->get_text(start, end);
+        string user_input = buffer->get_text(start, end);
 
         Command* cmd = parser->parse(user_input);
         cmd->exec();
@@ -93,7 +93,7 @@ bool TextView::on_key_pressed(guint keyval, guint keycode, Gdk::ModifierType sta
     }
     else if (keyval == GDK_KEY_BackSpace)
     {
-        const std::string prefix = settings->get_prefix();
+        const string prefix = settings->get_prefix();
         const int len = prefix.length();
 
         auto buffer = get_buffer();

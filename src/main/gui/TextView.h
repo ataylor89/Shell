@@ -10,7 +10,7 @@ class TextView : public Gtk::TextView
 public:
     TextView(Settings* settings, Parser* parser);
     void clear();
-    void append(std::string text);
+    void append(string text);
     void append(char* text, int length);
     void append_prefix();
 private:
