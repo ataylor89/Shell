@@ -20,6 +20,8 @@ void UserProgram::exec()
     int count;
 
     args = split(user_input, " ");
+    preprocess(args);
+
     path = settings->get_program_directory() + "/" + args[0];
     count = args.size();
 
