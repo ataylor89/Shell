@@ -20,25 +20,23 @@ void Cd::preprocess(std::string& path)
 void Cd::exec()
 {
     std::vector<std::string> args;
-    std::string path;
 
     args = split(user_input, " ", 2);
 
     if (args.size() == 2)
     {
-        path = args[1];
-        preprocess(path);
+        preprocess(args[1]);
 
-        if (std::filesystem::is_directory(path))
+        if (std::filesystem::is_directory(args[1]))
         {
             if (args[1][0] == '/')
             {
-                std::filesystem::current_path(path);
+                std::filesystem::current_path(args[1]);
             }
 
             else
             {
-                std::filesystem::current_path(std::filesystem::current_path() /= path);
+                std::filesystem::current_path(std::filesystem::current_path() /= args[1]);
             }
         }
 
