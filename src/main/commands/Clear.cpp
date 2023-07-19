@@ -1,9 +1,11 @@
 #include "commands/Clear.h"
 
-Clear::Clear(std::string& user_input, Window* window) : Command(user_input, window) {}
+Clear::Clear(string& cmd, vector<string>& args, Window* window) : Command(cmd, args, window)
+{
+    text_view = window->get_text_view();
+}
 
 void Clear::exec()
 {
-    TextView* text_view = window->get_text_view();
     text_view->clear();
 }

@@ -9,9 +9,11 @@ class Parser
 {
 public:
     Parser(Window* window);
-    Command* parse(std::string& user_input);
+    Command* parse(string& cmd);
 private:
+    void replace_tilde(vector<string>& args);
     Window* window;
+    Settings* settings;
     CommandList* command_list;
 };
 

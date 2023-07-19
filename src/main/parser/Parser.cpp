@@ -12,51 +12,63 @@
 Parser::Parser(Window* window)
 {
     this->window = window;
-    this->command_list = new CommandList;
+    settings = window->get_settings();
+    command_list = new CommandList;
 }
 
-Command* Parser::parse(std::string& user_input)
+Command* Parser::parse(string& cmd)
 {
-    std::vector<std::string> args;
+    vector<string> args;
 
-    trim(user_input);
-    args = split(user_input, " ");
+    trim(cmd);
+    args = split(cmd, " ");
 
     if (args.empty())
     {
-        return new NullCommand(user_input, window);
+        return new NullCommand(cmd, args, window);
     }
 
     else if (args[0].length() > 1 && args[0][0] == '*')
     {
-        user_input.erase(0, 1);
-        return new SystemProgram(user_input, window);
+        cmd.erase(0, 1);
+        return new SystemProgram(cmd, args, window);
     }
 
     else if (!command_list->contains(args[0]))
     {
-        return new NullCommand(user_input, window, "Command not found.");
+        return new NullCommand(cmd, args, window, "Command not found.");
     }
 
     else
     {
+        replace_tilde(args);
+
         CommandType command_type = (*command_list)[args[0]];
         switch (command_type)
         {
             case CommandType::CD:
-                return new Cd(user_input, window);
+                return new Cd(cmd, args, window);
             case CommandType::CLEAR:
-                return new Clear(user_input, window);
+                return new Clear(cmd, args, window);
             case CommandType::EXIT:
-                return new Exit(user_input, window);
+                return new Exit(cmd, args, window);
             case CommandType::PWD:
-                return new Pwd(user_input, window);
+                return new Pwd(cmd, args, window);
             case CommandType::SETPREFIX:
-                return new SetPrefix(user_input, window);
+                return new SetPrefix(cmd, args, window);
             case CommandType::USER_PROGRAM:
-                return new UserProgram(user_input, window);
+                return new UserProgram(cmd, args, window);
             default:
-                return new NullCommand(user_input, window);
+                return new NullCommand(cmd, args, window);
         }
+    }
+}
+
+void Parser::replace_tilde(vector<string>& args)
+{
+    if (args.size() > 1 && args[1][0] == '~')
+    {
+        args[1].erase(0, 1);
+        args[1] = settings->get_user_directory() + args[1];
     }
 }

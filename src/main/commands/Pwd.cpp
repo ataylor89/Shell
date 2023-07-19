@@ -2,20 +2,16 @@
 #include "commands/Pwd.h"
 #include <filesystem>
 
-Pwd::Pwd(std::string& user_input, Window* window) : Command(user_input, window)
+Pwd::Pwd(string& cmd, vector<string>& args, Window* window) : Command(cmd, args, window)
 {
     text_view = window->get_text_view();
 }
 
 void Pwd::exec()
 {
-    std::vector<std::string> args;
-
-    args = split(user_input, " ");
-
     if (args.size() == 1)
     {
-        text_view->append("\n" + std::filesystem::current_path().string());
+        text_view->append("\n" + filesystem::current_path().string());
     }
 
     text_view->append("\n");

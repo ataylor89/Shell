@@ -6,10 +6,11 @@
 class SetPrefix : public Command
 {
 public:
-    SetPrefix(std::string& user_input, Window* window);
+    SetPrefix(string& cmd, vector<string>& args, Window* window);
     void exec();
 private:
     TextView* text_view;
+    Settings* settings;
 };
 
 #endif

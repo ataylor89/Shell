@@ -6,7 +6,7 @@
 class SystemProgram : public Command
 {
 public:
-    SystemProgram(std::string& user_input, Window* window);
+    SystemProgram(string& cmd, vector<string>& args, Window* window);
     void exec();
 private:
     TextView* text_view;

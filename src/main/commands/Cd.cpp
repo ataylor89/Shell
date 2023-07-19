@@ -2,30 +2,25 @@
 #include "commands/Cd.h"
 #include <filesystem>
 
-Cd::Cd(std::string& user_input, Window* window) : Command(user_input, window)
+Cd::Cd(string& cmd, vector<string>& args, Window* window) : Command(cmd, args, window)
 {
     text_view = window->get_text_view();
 }
 
 void Cd::exec()
 {
-    std::vector<std::string> args;
-
-    args = split(user_input, " ", 2);
-    preprocess(args);
-
     if (args.size() == 2)
     {
-        if (std::filesystem::is_directory(args[1]))
+        if (filesystem::is_directory(args[1]))
         {
             if (args[1][0] == '/')
             {
-                std::filesystem::current_path(args[1]);
+                filesystem::current_path(args[1]);
             }
 
             else
             {
-                std::filesystem::current_path(std::filesystem::current_path() /= args[1]);
+                filesystem::current_path(filesystem::current_path() /= args[1]);
             }
         }
 

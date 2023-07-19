@@ -1,8 +1,8 @@
 #include "commands/SystemProgram.h"
 #include <cstdlib>
 
-SystemProgram::SystemProgram(std::string& user_input, Window* window)
-: Command(user_input, window)
+SystemProgram::SystemProgram(string& cmd, vector<string>& args, Window* window)
+: Command(cmd, args, window)
 {
     text_view = window->get_text_view();
 }
@@ -11,11 +11,11 @@ void SystemProgram::exec()
 {
     FILE* file;
     char buffer[128];
-    std::string output;
+    string output;
 
-    user_input += " 2>&1";
+    cmd += " 2>&1";
 
-    if ((file = popen(user_input.c_str(), "r")) == NULL)
+    if ((file = popen(cmd.c_str(), "r")) == NULL)
     {
         return;
     }

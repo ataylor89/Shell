@@ -6,7 +6,7 @@
 class Cd : public Command
 {
 public:
-    Cd(std::string& user_input, Window* window);
+    Cd(string& cmd, vector<string>& args, Window* window);
     void exec();
 private:
     TextView* text_view;

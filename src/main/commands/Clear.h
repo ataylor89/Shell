@@ -6,8 +6,10 @@
 class Clear : public Command
 {
 public:
-    Clear(std::string& user_input, Window* window);
+    Clear(string& cmd, vector<string>& args, Window* window);
     void exec();
+private:
+    TextView* text_view;
 };
 
 #endif

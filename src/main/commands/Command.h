@@ -5,17 +5,18 @@
 #include <vector>
 #include <string>
 
+using namespace std;
+
 class Command
 {
 public:
-    Command(std::string& user_input, Window* window);
+    Command(string& cmd, vector<string>& args, Window* window);
     virtual ~Command();
     virtual void exec() = 0;
 protected:
-    void preprocess(std::vector<std::string>& args);
-    std::string user_input;
+    string cmd;
+    vector<string> args;
     Window* window;
-    Settings* settings;
 };
 
 #endif

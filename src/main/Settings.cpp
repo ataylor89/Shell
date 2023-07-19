@@ -5,7 +5,7 @@
 #include <grp.h>
 
 Settings::Settings()
-: prefix("% "), program_directory(std::filesystem::current_path().string() + "/bin")
+: prefix("% "), program_directory(filesystem::current_path().string() + "/bin")
 {
 
 }
@@ -36,17 +36,17 @@ void Settings::load()
     groupname = gr->gr_name;
 }
 
-void Settings::set_prefix(std::string prefix)
+void Settings::set_prefix(string prefix)
 {
     this->prefix = prefix;
 }
 
-std::string Settings::get_prefix()
+string Settings::get_prefix()
 {
     return prefix;
 }
 
-std::string Settings::get_program_directory()
+string Settings::get_program_directory()
 {
     return program_directory;
 }
@@ -61,17 +61,17 @@ int Settings::get_group_id()
     return group_id;
 }
 
-std::string Settings::get_username()
+string Settings::get_username()
 {
     return username;
 }
 
-std::string Settings::get_groupname()
+string Settings::get_groupname()
 {
     return groupname;
 }
 
-std::string Settings::get_user_directory()
+string Settings::get_user_directory()
 {
     return user_directory;
 }

@@ -4,6 +4,7 @@
 #include "parser/CommandType.h"
 #include <map>
 #include <string>
+
 using namespace std;
 
 class CommandList : public map<string, CommandType>

@@ -6,11 +6,12 @@
 class UserProgram : public Command
 {
 public:
-    UserProgram(std::string& user_input, Window* window);
+    UserProgram(string& cmd, vector<string>& args, Window* window);
     void exec();
 private:
     void exec(const char* path, char** argv);
     TextView* text_view;
+    Settings* settings;
 };
 
 #endif

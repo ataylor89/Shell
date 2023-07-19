@@ -6,20 +6,17 @@
 #include <stdlib.h>
 #include <string.h>
 
-UserProgram::UserProgram(std::string& user_input, Window* window) 
-: Command(user_input, window)
+UserProgram::UserProgram(string& cmd, vector<string>& args, Window* window) 
+: Command(cmd, args, window)
 {
     text_view = window->get_text_view();
+    settings = window->get_settings();
 }
 
 void UserProgram::exec()
 {
     string path;
-    std::vector<std::string> args;
     int count;
-
-    args = split(user_input, " ");
-    preprocess(args);
 
     path = settings->get_program_directory() + "/" + args[0];
     count = args.size();

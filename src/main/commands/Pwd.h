@@ -6,7 +6,7 @@
 class Pwd : public Command
 {
 public:
-    Pwd(std::string& user_input, Window* window);
+    Pwd(string& cmd, vector<string>& args, Window* window);
     void exec();
 private:
     TextView* text_view;

@@ -6,8 +6,8 @@
 class NullCommand : public Command
 {
 public:
-    NullCommand(std::string& user_input, Window* window);
-    NullCommand(std::string& user_input, Window* window, std::string error_message);
+    NullCommand(string& cmd, vector<string>& args, Window* window);
+    NullCommand(string& cmd, vector<string>& args, Window* window, std::string error_message);
     void exec();
 private:
     TextView* text_view;
