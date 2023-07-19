@@ -3,7 +3,6 @@
 
 SetPrefix::SetPrefix(std::string& user_input, Window* window) : Command(user_input, window)
 {
-    settings = window->get_settings();
     text_view = window->get_text_view();
 }
 
