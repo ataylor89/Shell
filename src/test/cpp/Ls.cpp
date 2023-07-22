@@ -9,7 +9,7 @@ void diagnostics(char* program_output, int length, int num_iterations)
 {
     char c;
 
-    printf("Diagnostics:\n");
+    printf("\nDiagnostics:\n");
 
     for (int i = num_iterations; i > 0; i--)
     {

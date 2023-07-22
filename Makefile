@@ -10,9 +10,9 @@ shell_software: clean
 
 tests: shell_software
 	mkdir tests
-	g++ src/test/Split.cpp src/main/Util.cpp -I src/main -o tests/Split
-	g++ src/test/Trim.cpp src/main/Util.cpp -I src/main -o tests/Trim
-	g++ src/test/Ls.cpp -o tests/Ls
+	g++ src/test/cpp/Split.cpp src/main/cpp/util/StringUtils.cpp -I src/main/cpp -o tests/Split
+	g++ src/test/cpp/Trim.cpp src/main/cpp/util/StringUtils.cpp -I src/main/cpp -o tests/Trim
+	g++ src/test/cpp/Ls.cpp -o tests/Ls
 
 terminal: shell_software
 	g++ src/main/cpp/*.cpp \
