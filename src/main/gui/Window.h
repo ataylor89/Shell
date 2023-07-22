@@ -1,8 +1,8 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
-#include "ForwardDeclarations.h"
 #include "Settings.h"
+#include "util/ForwardDeclarations.h"
 #include "parser/Parser.h"
 #include "gui/TextView.h"
 #include <gtkmm.h>
