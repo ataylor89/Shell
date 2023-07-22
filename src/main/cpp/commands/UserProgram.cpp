@@ -44,6 +44,8 @@ void UserProgram::exec()
     }
 
     text_view->append_prefix();
+
+    delete this;
 }
 
 void UserProgram::exec(const char* path, char** argv)

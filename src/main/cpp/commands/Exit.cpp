@@ -6,4 +6,6 @@ void Exit::exec()
 {
     auto app = window->get_application();
     app->quit();
+
+    delete this;
 }

@@ -34,4 +34,6 @@ void SystemProgram::exec()
 
     text_view->append("\n" + output);
     text_view->append_prefix();
+
+    delete this;
 }

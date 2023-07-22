@@ -25,4 +25,6 @@ void NullCommand::exec()
         text_view->append("\n" + error_message + "\n");
         text_view->append_prefix();
     }
+
+    delete this;
 }

@@ -15,4 +15,6 @@ void Pwd::exec()
 
     text_view->append("\n");
     text_view->append_prefix();
+
+    delete this;
 }

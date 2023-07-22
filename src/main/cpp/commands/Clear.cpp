@@ -8,4 +8,6 @@ Clear::Clear(string& cmd, vector<string>& args, Window* window) : Command(cmd, a
 void Clear::exec()
 {
     text_view->clear();
+
+    delete this;
 }
