@@ -1,11 +1,7 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
-class Window;
-class TextView;
-class Parser;
-class Command;
-
+#include "ForwardDeclarations.h"
 #include "Settings.h"
 #include "parser/Parser.h"
 #include "gui/TextView.h"
