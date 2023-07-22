@@ -4,8 +4,6 @@
 #include <string.h>
 #include <ctype.h>
 
-#define PARTITION_LENGTH 512
-
 Hexdump* hexdump(char* str, int size, int line_pos)
 {
     Hexdump *dump;

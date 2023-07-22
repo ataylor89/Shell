@@ -1,8 +1,6 @@
 #include "cat.h"
 #include <stdio.h>
 
-#define PARTITION_LENGTH 4096
-
 int cat(char* filename)
 {
     FILE* file;

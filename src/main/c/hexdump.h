@@ -1,3 +1,5 @@
+#define PARTITION_LENGTH 512
+
 typedef struct
 {
     char *buffer;
