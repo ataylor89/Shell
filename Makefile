@@ -16,11 +16,11 @@ tests: shell_software
 
 terminal: shell_software
 	g++ src/main/cpp/*.cpp \
-		src/main/cpp/util/*.cpp \
-		src/main/cpp/gui/*.cpp \
-		src/main/cpp/parser/*.cpp \
-		src/main/cpp/commands/*.cpp \
-		-I src/main/cpp \
-		-o bin/Terminal \
-		`pkg-config --cflags --libs gtkmm-4.0` \
-		--std=c++20
+	    src/main/cpp/util/*.cpp \
+	    src/main/cpp/gui/*.cpp \
+	    src/main/cpp/parser/*.cpp \
+	    src/main/cpp/commands/*.cpp \
+	    -I src/main/cpp \
+	    -o bin/Terminal \
+	    `pkg-config --cflags --libs gtkmm-4.0` \
+	    --std=c++20
