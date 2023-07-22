@@ -6,13 +6,13 @@
 
 #define PARTITION_LENGTH 512
 
-HEXDUMP* hexdump(char* str, int size, int line_pos)
+Hexdump* hexdump(char* str, int size, int line_pos)
 {
-    HEXDUMP *dump;
+    Hexdump *dump;
     char *ptr;
     int i, j, num_spaces;
 
-    dump = (HEXDUMP *) malloc(sizeof(HEXDUMP));
+    dump = (Hexdump *) malloc(sizeof(Hexdump));
     dump->buffer = (char *) malloc(sizeof(char) * size * 10);
     ptr = dump->buffer;
 
@@ -74,7 +74,7 @@ int main(int argc, char** argv)
         return 0;
     }
 
-    HEXDUMP *dump;
+    Hexdump *dump;
     FILE *file;
     int offset, filesize, n;
     char *buffer;
