@@ -71,7 +71,7 @@ void UserProgram::exec(const char* path, char** argv)
 
         if (program_output[length - 1] == EOF)
         {
-            text_view->append(program_output, length - 2);
+            text_view->append(program_output, length - 1);
             break;
         }
 

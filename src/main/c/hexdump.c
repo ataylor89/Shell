@@ -70,7 +70,6 @@ int main(int argc, char** argv)
     if (argc != 2)
     {
         printf("Usage: %s <filename>\n", argv[0]);
-        putc(0, stdout);
         putc(EOF, stdout);
         return 0;
     }
@@ -83,7 +82,6 @@ int main(int argc, char** argv)
     if ((file = fopen(argv[1], "r")) == NULL)
     {
         printf("Error opening file.\n");
-        putc(0, stdout);
         putc(EOF, stdout);
         return 1;
     }
@@ -102,7 +100,6 @@ int main(int argc, char** argv)
         if (fread(buffer, 1, n, file) != n)
         {
             printf("Error reading from file.\n");
-            putc(0, stdout);
             putc(EOF, stdout);
             return 1;
         }
@@ -118,7 +115,6 @@ int main(int argc, char** argv)
         }
     }
 
-    putc(0, stdout);
     putc(EOF, stdout);
     fclose(file);
     return 0;
