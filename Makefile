@@ -15,12 +15,12 @@ tests: shell_software
 	g++ src/test/Ls.cpp -o tests/Ls
 
 terminal: shell_software
-	g++ src/main/*.cpp \
-		src/main/util/*.cpp \
-		src/main/gui/*.cpp \
-		src/main/parser/*.cpp \
-		src/main/commands/*.cpp \
-		-I src/main \
+	g++ src/main/cpp/*.cpp \
+		src/main/cpp/util/*.cpp \
+		src/main/cpp/gui/*.cpp \
+		src/main/cpp/parser/*.cpp \
+		src/main/cpp/commands/*.cpp \
+		-I src/main/cpp \
 		-o bin/Terminal \
 		`pkg-config --cflags --libs gtkmm-4.0` \
 		--std=c++20
