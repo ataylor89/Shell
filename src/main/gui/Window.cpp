@@ -1,5 +1,4 @@
 #include "gui/Window.h"
-#include <filesystem>
 
 Window::Window() : vbox(Gtk::Orientation::VERTICAL)
 {
