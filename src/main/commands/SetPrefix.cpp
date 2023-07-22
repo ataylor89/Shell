@@ -1,4 +1,3 @@
-#include "Util.h"
 #include "commands/SetPrefix.h"
 
 SetPrefix::SetPrefix(string& cmd, vector<string>& args, Window* window) : Command(cmd, args, window)

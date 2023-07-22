@@ -16,6 +16,7 @@ tests: shell_software
 
 terminal: shell_software
 	g++ src/main/*.cpp \
+		src/main/util/*.cpp \
 		src/main/gui/*.cpp \
 		src/main/parser/*.cpp \
 		src/main/commands/*.cpp \
