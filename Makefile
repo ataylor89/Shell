@@ -4,9 +4,9 @@ clean:
 
 shell_software: clean
 	mkdir bin
-	gcc src/main/c/ls.c -o bin/ls
-	gcc src/main/c/cat.c -o bin/cat
-	gcc src/main/c/hexdump.c -o bin/hexdump
+	gcc src/main/c/ls/ls.c -o bin/ls
+	gcc src/main/c/cat/cat.c -o bin/cat
+	gcc src/main/c/hexdump/hexdump.c -o bin/hexdump
 
 tests: shell_software
 	mkdir tests
