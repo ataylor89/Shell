@@ -70,15 +70,11 @@ void UserProgram::exec(const char* path, char** argv)
     {
         length = read(fds[0], program_output, 256);
 
-        if (program_output[length - 1] == EOF)
+        if (length <= 0)
         {
-            text_view->append(program_output, length - 1);
             break;
         }
 
-        else
-        {
-            text_view->append(program_output, length);
-        }
+        text_view->append(program_output, length);
     }
 }

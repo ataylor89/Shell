@@ -9,7 +9,7 @@ void diagnostics(char* program_output, int length, int num_iterations)
 {
     char c;
 
-    printf("\nDiagnostics:\n");
+    printf("Diagnostics:\n");
 
     for (int i = num_iterations; i > 0; i--)
     {
@@ -50,16 +50,16 @@ int main(int argc, char** argv)
     {
         n = read(fds[0], program_output, 1024);
 
-        printf("%s", program_output);
-        // fwrite(program_output, 1, n, stdout);
-
-        if (program_output[n-1] == EOF)
+        if (n <= 0)
         {
             break;
         }
-    }
 
-    diagnostics(program_output, n, 9);
+        printf("%s", program_output);
+        // fwrite(program_output, 1, n, stdout);
+
+        diagnostics(program_output, n, 9);
+    }
 
     return 0;
 }

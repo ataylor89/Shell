@@ -254,7 +254,6 @@ int main(int argc, char** argv)
             break;
         default:
             printf("Usage: %s [path]\n", argv[0]);
-            putc(EOF, stdout);
             return exit_code;
     }
 
@@ -270,8 +269,6 @@ int main(int argc, char** argv)
         format_directory_listing(dl);
         fwrite(dl->buf, 1, dl->length, stdout);
     }
-
-    putc(EOF, stdout);
 
     return exit_code;
 }

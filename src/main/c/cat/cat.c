@@ -10,7 +10,6 @@ int cat(char* filename)
     if ((file = fopen(filename, "r")) == NULL)
     {
         printf("Error opening file.\n");
-        putc(EOF, stdout);
         return 1;
     }
 
@@ -26,7 +25,6 @@ int cat(char* filename)
         if (fread(buffer, 1, n, file) != n)
         {
             printf("Error reading from file.\n");
-            putc(EOF, stdout);
             return 1;
         }
 
@@ -52,8 +50,6 @@ int main(int argc, char** argv)
         printf("Usage: %s <filename>\n", argv[0]);
         exit_code = 0;
     }
-
-    putc(EOF, stdout);
     
     return exit_code;
 }
