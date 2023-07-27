@@ -1,15 +1,21 @@
-#include "cat.h"
+#include "hexdump.h"
 #include <stdio.h>
+#include <stdlib.h>
 
-#define PARTITION_LENGTH 4096
-
-int cat(char* filename)
+int main(int argc, char** argv)
 {
-    FILE* file;
-    int offset, filesize, n;
-    char buffer[PARTITION_LENGTH];
+    if (argc != 2)
+    {
+        printf("Usage: %s <filename>\n", argv[0]);
+        return 0;
+    }
 
-    if ((file = fopen(filename, "r")) == NULL)
+    Hexdump *dump;
+    FILE *file;
+    int offset, filesize, n;
+    char *buffer;
+
+    if ((file = fopen(argv[1], "r")) == NULL)
     {
         fprintf(stderr, "Error opening file.\n");
         return 1;
@@ -20,19 +26,27 @@ int cat(char* filename)
     filesize = ftell(file);
     fseek(file, 0, SEEK_SET);
 
+    buffer = (char *) malloc(PARTITION_LENGTH);
+
     while (offset < filesize)
     {
         n = (filesize - offset) < PARTITION_LENGTH ? filesize - offset : PARTITION_LENGTH;
-         
+
         if (fread(buffer, 1, n, file) != n)
         {
             fprintf(stderr, "Error reading from file.\n");
             return 1;
         }
 
-        fwrite(buffer, 1, n, stdout);
+        dump = hexdump(buffer, n, offset);
+        fwrite(dump->buffer, 1, dump->size, stdout);
 
         offset += n;
+
+        if (offset < filesize)
+        {
+            printf("\n*\n");
+        }
     }
 
     fclose(file);

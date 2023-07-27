@@ -4,15 +4,14 @@ clean:
 
 shell_software: clean
 	mkdir bin
-	gcc src/main/c/ls/ls.c -o bin/ls
-	gcc src/main/c/cat/cat.c -o bin/cat
-	gcc src/main/c/hexdump/hexdump.c -o bin/hexdump
+	gcc src/main/c/ls/main.c src/main/c/ls/ls.c -o bin/ls
+	gcc src/main/c/cat/main.c src/main/c/cat/cat.c -o bin/cat
+	gcc src/main/c/hexdump/main.c src/main/c/hexdump/hexdump.c -o bin/hexdump
 
 tests: shell_software
 	mkdir tests
 	g++ src/test/cpp/Split.cpp src/main/cpp/util/StringUtils.cpp -I src/main/cpp -o tests/Split
 	g++ src/test/cpp/Trim.cpp src/main/cpp/util/StringUtils.cpp -I src/main/cpp -o tests/Trim
-	g++ src/test/cpp/Ls.cpp -o tests/Ls
 
 terminal: shell_software
 	g++ src/main/cpp/*.cpp \
