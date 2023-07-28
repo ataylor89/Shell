@@ -33,7 +33,7 @@ Command* Parser::parse(string& cmd)
         return new SystemProgram(cmd, args, window);
     }
 
-    else if (!cmd_map.contains(args[0]))
+    else if (!cmdmap.contains(args[0]))
     {
         return new NullCommand(cmd, args, window, "Command not found.");
     }
@@ -42,7 +42,7 @@ Command* Parser::parse(string& cmd)
     {
         replace_tilde(args);
 
-        switch (cmd_map[args[0]])
+        switch (cmdmap[args[0]])
         {
             case CmdList::CD:
                 return new Cd(cmd, args, window);

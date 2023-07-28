@@ -14,7 +14,7 @@ private:
     void replace_tilde(vector<string>& args);
     Window* window;
     Settings* settings;
-    CmdMap cmd_map;
+    CmdMap cmdmap;
 };
 
 #endif
