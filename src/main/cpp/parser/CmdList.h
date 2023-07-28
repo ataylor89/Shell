@@ -3,9 +3,12 @@
 
 enum class CmdList
 {
+    CAT,
     CD,
     CLEAR,
     EXIT,
+    HEXDUMP,
+    LS,
     NULL_COMMAND,
     PWD,
     SET_PREFIX,
