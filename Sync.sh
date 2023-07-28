@@ -1,4 +1,4 @@
-if [[ ! -z $CAT_SOURCE_CODE ]]; then
+if [ ! -z $CAT_SOURCE_CODE ]; then
     echo "Syncing cat source code..."
     rm src/main/c/cat/*.c 
     rm src/main/c/cat/*.h
@@ -6,7 +6,7 @@ if [[ ! -z $CAT_SOURCE_CODE ]]; then
     cp $CAT_SOURCE_CODE/*.h src/main/c/cat
 fi
 
-if [[ ! -z $HEXDUMP_SOURCE_CODE ]]; then
+if [ ! -z $HEXDUMP_SOURCE_CODE ]; then
     echo "Syncing hexdump source code..."
     rm src/main/c/hexdump/*.c 
     rm src/main/c/hexdump/*.h
@@ -14,7 +14,7 @@ if [[ ! -z $HEXDUMP_SOURCE_CODE ]]; then
     cp $HEXDUMP_SOURCE_CODE/*.h src/main/c/hexdump
 fi
 
-if [[ ! -z $LS_SOURCE_CODE ]]; then
+if [ ! -z $LS_SOURCE_CODE ]; then
     echo "Syncinc ls source code..."
     rm src/main/c/ls/*.c 
     rm src/main/c/ls/*.h
