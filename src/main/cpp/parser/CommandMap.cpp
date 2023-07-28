@@ -1,13 +1,13 @@
 #include "parser/CommandMap.h"
 
-CommandMap::CommandMap() : map<string, CommandType>()
+CommandMap::CommandMap() : map<string, CommandList>()
 {
-    insert({"cat",          CommandType::USER_PROGRAM});
-    insert({"cd",           CommandType::CD});
-    insert({"clear",        CommandType::CLEAR});
-    insert({"exit",         CommandType::EXIT});
-    insert({"hexdump",      CommandType::USER_PROGRAM});
-    insert({"ls",           CommandType::USER_PROGRAM});
-    insert({"pwd",          CommandType::PWD});
-    insert({"setprefix",    CommandType::SETPREFIX});
+    insert({"cat",          CommandList::USER_PROGRAM});
+    insert({"cd",           CommandList::CD});
+    insert({"clear",        CommandList::CLEAR});
+    insert({"exit",         CommandList::EXIT});
+    insert({"hexdump",      CommandList::USER_PROGRAM});
+    insert({"ls",           CommandList::USER_PROGRAM});
+    insert({"pwd",          CommandList::PWD});
+    insert({"setprefix",    CommandList::SETPREFIX});
 }

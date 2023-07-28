@@ -43,20 +43,19 @@ Command* Parser::parse(string& cmd)
     {
         replace_tilde(args);
 
-        CommandType command_type = (*command_map)[args[0]];
-        switch (command_type)
+        switch ((*command_map)[args[0]])
         {
-            case CommandType::CD:
+            case CommandList::CD:
                 return new Cd(cmd, args, window);
-            case CommandType::CLEAR:
+            case CommandList::CLEAR:
                 return new Clear(cmd, args, window);
-            case CommandType::EXIT:
+            case CommandList::EXIT:
                 return new Exit(cmd, args, window);
-            case CommandType::PWD:
+            case CommandList::PWD:
                 return new Pwd(cmd, args, window);
-            case CommandType::SETPREFIX:
+            case CommandList::SETPREFIX:
                 return new SetPrefix(cmd, args, window);
-            case CommandType::USER_PROGRAM:
+            case CommandList::USER_PROGRAM:
                 return new UserProgram(cmd, args, window);
             default:
                 return new NullCommand(cmd, args, window);
