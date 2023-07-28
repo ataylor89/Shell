@@ -3,7 +3,7 @@
 
 #include "gui/Window.h"
 #include "commands/Command.h"
-#include "parser/CommandList.h"
+#include "parser/CommandMap.h"
 
 class Parser
 {
@@ -14,7 +14,7 @@ private:
     void replace_tilde(vector<string>& args);
     Window* window;
     Settings* settings;
-    CommandList* command_list;
+    CommandMap* command_map;
 };
 
 #endif

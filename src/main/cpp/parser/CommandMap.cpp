@@ -1,6 +1,6 @@
-#include "parser/CommandList.h"
+#include "parser/CommandMap.h"
 
-CommandList::CommandList() : map<string, CommandType>()
+CommandMap::CommandMap() : map<string, CommandType>()
 {
     insert({"cat",          CommandType::USER_PROGRAM});
     insert({"cd",           CommandType::CD});

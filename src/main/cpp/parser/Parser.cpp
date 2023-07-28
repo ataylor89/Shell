@@ -13,7 +13,7 @@ Parser::Parser(Window* window)
 {
     this->window = window;
     settings = window->get_settings();
-    command_list = new CommandList;
+    command_map = new CommandMap;
 }
 
 Command* Parser::parse(string& cmd)
@@ -34,7 +34,7 @@ Command* Parser::parse(string& cmd)
         return new SystemProgram(cmd, args, window);
     }
 
-    else if (!command_list->contains(args[0]))
+    else if (!command_map->contains(args[0]))
     {
         return new NullCommand(cmd, args, window, "Command not found.");
     }
@@ -43,7 +43,7 @@ Command* Parser::parse(string& cmd)
     {
         replace_tilde(args);
 
-        CommandType command_type = (*command_list)[args[0]];
+        CommandType command_type = (*command_map)[args[0]];
         switch (command_type)
         {
             case CommandType::CD:

@@ -7,10 +7,10 @@
 
 using namespace std;
 
-class CommandList : public map<string, CommandType>
+class CommandMap : public map<string, CommandType>
 {
 public:
-    CommandList();
+    CommandMap();
 };
 
 #endif
