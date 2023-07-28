@@ -9,5 +9,5 @@ CmdMap::CmdMap() : map<string, CmdList>()
     insert({"hexdump",      CmdList::USER_PROGRAM});
     insert({"ls",           CmdList::USER_PROGRAM});
     insert({"pwd",          CmdList::PWD});
-    insert({"setprefix",    CmdList::SETPREFIX});
+    insert({"setprefix",    CmdList::SET_PREFIX});
 }

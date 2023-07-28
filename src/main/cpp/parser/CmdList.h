@@ -8,7 +8,7 @@ enum class CmdList
     EXIT,
     NULL_COMMAND,
     PWD,
-    SETPREFIX,
+    SET_PREFIX,
     SYSTEM_PROGRAM,
     USER_PROGRAM
 };

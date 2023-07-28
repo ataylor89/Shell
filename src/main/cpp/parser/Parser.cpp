@@ -52,7 +52,7 @@ Command* Parser::parse(string& cmd)
                 return new Exit(cmd, args, window);
             case CmdList::PWD:
                 return new Pwd(cmd, args, window);
-            case CmdList::SETPREFIX:
+            case CmdList::SET_PREFIX:
                 return new SetPrefix(cmd, args, window);
             case CmdList::USER_PROGRAM:
                 return new UserProgram(cmd, args, window);
