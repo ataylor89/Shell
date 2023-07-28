@@ -1,7 +1,7 @@
-#ifndef COMMAND_LIST_H
-#define COMMAND_LIST_H
+#ifndef CMD_LIST_H
+#define CMD_LIST_H
 
-enum class CommandList
+enum class CmdList
 {
     CD,
     CLEAR,

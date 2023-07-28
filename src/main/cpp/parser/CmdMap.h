@@ -1,16 +1,16 @@
 #ifndef COMMAND_MAP_H
 #define COMMAND_MAP_H
 
-#include "parser/CommandList.h"
+#include "parser/CmdList.h"
 #include <map>
 #include <string>
 
 using namespace std;
 
-class CommandMap : public map<string, CommandList>
+class CmdMap : public map<string, CmdList>
 {
 public:
-    CommandMap();
+    CmdMap();
 };
 
 #endif

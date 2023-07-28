@@ -13,7 +13,6 @@ Parser::Parser(Window* window)
 {
     this->window = window;
     settings = window->get_settings();
-    command_map = new CommandMap;
 }
 
 Command* Parser::parse(string& cmd)
@@ -34,7 +33,7 @@ Command* Parser::parse(string& cmd)
         return new SystemProgram(cmd, args, window);
     }
 
-    else if (!command_map->contains(args[0]))
+    else if (!cmd_map.contains(args[0]))
     {
         return new NullCommand(cmd, args, window, "Command not found.");
     }
@@ -43,19 +42,19 @@ Command* Parser::parse(string& cmd)
     {
         replace_tilde(args);
 
-        switch ((*command_map)[args[0]])
+        switch (cmd_map[args[0]])
         {
-            case CommandList::CD:
+            case CmdList::CD:
                 return new Cd(cmd, args, window);
-            case CommandList::CLEAR:
+            case CmdList::CLEAR:
                 return new Clear(cmd, args, window);
-            case CommandList::EXIT:
+            case CmdList::EXIT:
                 return new Exit(cmd, args, window);
-            case CommandList::PWD:
+            case CmdList::PWD:
                 return new Pwd(cmd, args, window);
-            case CommandList::SETPREFIX:
+            case CmdList::SETPREFIX:
                 return new SetPrefix(cmd, args, window);
-            case CommandList::USER_PROGRAM:
+            case CmdList::USER_PROGRAM:
                 return new UserProgram(cmd, args, window);
             default:
                 return new NullCommand(cmd, args, window);
