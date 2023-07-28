@@ -3,17 +3,15 @@
 
 enum class CmdList
 {
-    CAT,
-    CD,
-    CLEAR,
-    EXIT,
-    HEXDUMP,
-    LS,
-    NULL_COMMAND,
-    PWD,
-    SET_PREFIX,
-    SYSTEM_PROGRAM,
-    USER_PROGRAM
+    CD = 1,
+    CLEAR = 2,
+    EXIT = 3,
+    PWD = 4,
+    SET_PREFIX = 5,
+    CAT = 20,
+    HEXDUMP = 20,
+    LS = 20,
+    USER_PROGRAM = 20
 };
 
 #endif

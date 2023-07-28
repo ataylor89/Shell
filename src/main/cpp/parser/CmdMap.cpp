@@ -2,12 +2,12 @@
 
 CmdMap::CmdMap() : map<string, CmdList>()
 {
-    insert({"cat",          CmdList::USER_PROGRAM});
+    insert({"cat",          CmdList::CAT});
     insert({"cd",           CmdList::CD});
     insert({"clear",        CmdList::CLEAR});
     insert({"exit",         CmdList::EXIT});
-    insert({"hexdump",      CmdList::USER_PROGRAM});
-    insert({"ls",           CmdList::USER_PROGRAM});
+    insert({"hexdump",      CmdList::HEXDUMP});
+    insert({"ls",           CmdList::LS});
     insert({"pwd",          CmdList::PWD});
     insert({"setprefix",    CmdList::SET_PREFIX});
 }
